@@ -1,0 +1,31 @@
+#drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+#input-file-now-custom-2 {
+    display: none;
+}
+
+.label-file {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.label-file:hover {
+    background-color: #e0e0e0;
+}
+
+.label-file span {
+    font-weight: bold;
+}
+
+.contest-labels{
+    justify-content: center;
+}

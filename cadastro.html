@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SAIM - Cadastro</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Angkor&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Input-Upload.css">
+    <link rel="stylesheet" href="assets/css/pikaday.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark"
+        style="color: #000000;background: linear-gradient(-20deg, rgb(209,113,80) 0%, rgb(204,105,77) 20%, rgb(176,63,63) 31%, #f4a460 60%, rgb(209,113,80) 68%, rgb(204,105,77) 69%, #F4A460 100%), rgb(89,16,16);">
+        <div class="container-fluid"><a class="navbar-brand logo" href="#"
+                style="font-family: Angkor, serif;font-weight: bold;"><strong><span
+                        style="color: rgb(91, 32, 32);">SAIM</span></strong></a><button data-bs-toggle="collapse"
+                class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle
+                    navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"
+                            style="font-family: Allerta, sans-serif;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="bancoImagens.html"
+                            style="font-family: Allerta, sans-serif;">Banco de Imagens</a></li>
+                    <li class="nav-item"><a class="nav-link" href="arquivos.html"
+                            style="font-family: Allerta, sans-serif;">Arquivos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre.html"
+                            style="font-family: Allerta, sans-serif;">Sobre</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
+                            data-bs-toggle="dropdown" href="#" style="font-family: Allerta, sans-serif;">Filtros</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Afinamento</a><a
+                                class="dropdown-item" href="#">Dilatação</a><a class="dropdown-item"
+                                href="#">Erosão</a><a class="dropdown-item" href="#">Laplaciano</a><a
+                                class="dropdown-item" href="filtroLimiarizacao.html">Limiar</a><a class="dropdown-item"
+                                href="#">Média</a><a class="dropdown-item" href="#">Sobel X</a><a class="dropdown-item"
+                                href="#">Sobel Y</a><a class="dropdown-item" href="#">Sobel XY</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
+                            data-bs-toggle="dropdown" href="#" style="font-family: Allerta, sans-serif;">Madeira</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Mensuração</a><a
+                                class="dropdown-item" href="#">Gráfico</a><a class="dropdown-item" href="#">Ajustes
+                                Finos</a></div>
+                    </li>
+                </ul><a class="btn btn-primary" role="button"
+                    style="background: rgb(59,62,131);border-radius: 10;border-style: none;font-family: Allerta, sans-serif;"
+                    href="login.html">Entrar</a>
+            </div>
+        </div>
+    </nav>
+    <main class="page Register">
+        <section class="portfolio-block hire-me" style="border-style: none;padding-top: 0px;">
+            <div class="container">
+                <div id="headLogin" class="heading"><img id="logoMadeira" class="mt-2" src="assets/img/madeira.jpg"
+                        width="233" height="207" style="width: 130px;height: 120px;">
+                    <h2 style="font-family: Allerta, sans-serif;">Saim</h2>
+                    <div class="row">
+                        <div class="col" style="font-family: Allerta, sans-serif;"><span
+                                style="font-family: Allerta, sans-serif;font-weight: bold;font-size: 20px;">Criar uma
+                                nova conta</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="font-family: Allerta, sans-serif;"><span
+                                style="font-family: Allerta, sans-serif;">É rápido e fácil.</span></div>
+                    </div>
+                </div>
+                <form id="formCadastro">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <i class="icon ion-person"></i>
+                                <label class="form-label">Nome Completo</label>
+                                <input class="form-control" type="text" id="inputNome" required onchange="validateName()">
+                            </div>
+                            <div class="col-md-3">
+                                <i class="icon ion-university"></i>
+                                <label class="form-label">UF</label>
+                                <input class="form-control" type="text" id="inputUF" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div><i class="fas fa-university" id="iconInstituto"></i>
+                        <label class="form-label">Instituição de Ensino</label>
+                        <input class="form-control" type="text" id="inputInstituicao" required>
+                    </div>
+                    <div id="divEmail"><i class="icon ion-android-mail"></i>
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="email" id="inputEmail" required onchange="validateEmail()">
+                    </div>
+                    <div class="mb-3" style="margin-top: 10px;">
+                        <div class="row">
+                            <div class="col-md-6"><i class="icon ion-locked"></i>
+                                <label class="form-label">Senha</label>
+                                <input class="form-control" type="password" id="inputSenha" required title="Mínimo de 8 caracteres, incluindo números, letras maiúsculas e minúsculas e pelo menos um caractere especial">
+                                <span id="senha-dica" class="dica"></span>
+                        </div>
+                            <div class="col-md-6"><i class="icon ion-locked"></i>
+                                <label class="form-label">Confirmar Senha</label>
+                                <input class="form-control" type="password" id="inputConfirmSenha" required title="Mínimo de 8 caracteres, incluindo números, letras maiúsculas e minúsculas e pelo menos um caractere especial">
+                            </div>
+                        </div>
+                    <div class="mb-3" style="margin-top: 20px;">
+                        <button class="btn btn-primary d-block w-100" id="btnCadastro" type="submit" onclick="finishUserRegistration()"
+                            style="background: #218838;border-style: none;">Finalizar Cadastro
+                        </button>
+                   </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="links"><a href="https://facom.ufu.br/" target="_blank"
+                    style="font-family: Allerta, sans-serif;">Facom UFU</a></div>
+            <div class="social-icons"><a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);"
+                    target="_blank"><i class="icon ion-social-github"></i></a><a href="https://github.com/tpribeiro123"
+                    style="background: var(--bs-blue);" target="_blank"><i class="icon ion-social-github"></i></a></div>
+        </div>
+    </footer>
+    <script src="src/userRegistration.js"></script>
+    <script src="src/Extensions/constants.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/comum.js"></script>
+    <script src="assets/js/pikaday.min.js"></script>
+    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
