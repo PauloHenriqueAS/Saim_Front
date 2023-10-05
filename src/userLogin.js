@@ -31,11 +31,12 @@ const handleSubmit = () => {
           const res = await fetch(`${URL_API_BASE}/user/AutenticateUser`, requestOptions);
 
           const resData = await res.json();
-          if(resData.data == true){
+          console.log(resData)
+          if(resData.success == true){
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
-              text: `${resData.mensagem}`,
+              text: `${resData.message}`,
             }).then(() => {
               window.location.href = 'index.html';
             });
@@ -43,7 +44,7 @@ const handleSubmit = () => {
             Swal.fire({
               icon: 'error',
               title: 'Erro no Login',
-              text: `${resData.mensagem}`,
+              text: `${resData.message}`,
               allowOutsideClick: false,
             });
           }

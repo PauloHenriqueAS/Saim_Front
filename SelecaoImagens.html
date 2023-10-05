@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>SAIM - Redefinição de Senha</title>
+    <title>SAIM - Seleção de Imagens</title>
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="assets/css/pikaday.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
 </head>
 
 <body>
@@ -60,30 +62,20 @@
             </div>
         </div>
     </nav>
-    <main class="page hire-me-page">
-        <section class="portfolio-block hire-me" style="border-style: none;">
+    <main>
+        <section class="portfolio-block" style="border-style: none;">
             <div class="container">
-                <div id="headLogin" class="heading"><i class="icon ion-locked text-center"
-                        style="width: 130px;height: 120px;font-size: 100px;font-family: Allerta, sans-serif;"></i>
+                <div id="headTableImagens" class="heading">
+                    <i class="icon ion-images text-center" style="width: 130px;height: 120px;font-size: 100px;font-family: Allerta, sans-serif;"></i>
                     <div class="row">
-                        <div class="col" style="font-family: Allerta, sans-serif;"><span
-                                style="font-family: Allerta, sans-serif;font-weight: bold;font-size: 20px;">Problemas
-                                para entrar?</span></div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="font-family: Allerta, sans-serif;"><span
-                                style="font-family: Allerta, sans-serif;">Insira seu melhor email e enviaremos um link
-                                para você voltar a acessar sua conta.</span></div>
+                        <div class="col" style="font-family: Allerta, sans-serif;">
+                            <span style="font-family: Allerta, sans-serif;font-weight: bold;font-size: 20px;">Selecione uma imagem para o processamento</span>
+                        </div>
                     </div>
                 </div>
-                <form id="formLogin">
-                    <div id="divEmail"><i class="icon ion-android-mail"></i><label class="form-label"
-                            for="email">Email</label><input class="form-control" type="email" id="inputEmail"></div>
-                    <div class="mb-3"><button class="btn btn-primary d-block w-100" id="btnLogin" type="submit"
-                            style="background: #218838;border-style: none;">Enviar link para login</button></div>
-                    <div id="divLogin"><a class="text-center" href="cadastro.html"><br><span
-                        style="color: rgb(0, 123, 255); background-color: rgb(248, 249, 250);">Criar nova conta</a></div>
-                </form>
+                <div style="background-color: #f8f9fa; border-radius: 10px !important; padding: 30px !important;">                
+                    <table id="imagesDataTable" class="row-border rounded" style="border-radius: 0px !important; width: 100% !important; margin: 0px; "></table>
+                </div>
             </div>
         </section>
     </main>
@@ -97,7 +89,13 @@
                     style="background: var(--bs-blue);" target="_blank"><i class="icon ion-social-github"></i></a></div>
         </div>
     </footer>
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="src/tableImages.js"></script>
+    <script src="src/Extensions/constants.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/comum.js"></script>

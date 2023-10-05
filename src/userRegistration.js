@@ -83,11 +83,11 @@ function finishUserRegistration() {
           const res = await fetch(`${URL_API_BASE}/user/PostFullUser`, requestOptions);
           const resData = await res.json();
 
-          if (resData.data == true) {
+          if (resData.success == true) {
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
-              text: `${resData.mensagem}`,
+              text: `${resData.message}`,
             }).then(() => {
               window.location.href = 'login.html';
             });
@@ -95,7 +95,7 @@ function finishUserRegistration() {
             Swal.fire({
               icon: 'error',
               title: 'Erro no Cadastro',
-              text: `${resData.mensagem}`,
+              text: `${resData.message}`,
               allowOutsideClick: false,
             });
           }
