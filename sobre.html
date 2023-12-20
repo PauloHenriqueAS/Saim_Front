@@ -10,92 +10,165 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Angkor&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/swiper-icons.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
-    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Input-Upload.css">
-    <link rel="stylesheet" href="assets/css/pikaday.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Input-Upload.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/css/pikaday.min.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark" style="color: #000000;background: linear-gradient(-20deg, rgb(209,113,80) 0%, rgb(204,105,77) 20%, rgb(176,63,63) 31%, #f4a460 60%, rgb(209,113,80) 68%, rgb(204,105,77) 69%, #F4A460 100%), rgb(89,16,16);">
-        <div class="container-fluid"><a class="navbar-brand logo" href="index.html" style="font-family: Angkor, serif;font-weight: bold;"><strong><span style="color: rgb(91, 32, 32);">SAIM</span></strong></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="index.html" style="font-family: Angkor, serif;font-weight: bold; margin-left: 2%;">
+                <strong><span style="color: rgb(91, 32, 32);">SAIM</span></strong>
+            </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html" style="font-family: Allerta, sans-serif;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="bancoImagens.html" style="font-family: Allerta, sans-serif;">Banco de Imagens</a></li>
-                    <li class="nav-item"><a class="nav-link" href="arquivos.html" style="font-family: Allerta, sans-serif;">Arquivos</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="sobre.html" style="font-family: Allerta, sans-serif;">Sobre</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="font-family: Allerta, sans-serif;">Filtros</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Afinamento</a><a class="dropdown-item" href="#">Dilatação</a><a class="dropdown-item" href="#">Erosão</a><a class="dropdown-item" href="#">Laplaciano</a><a class="dropdown-item" href="filtroLimiarizacao.html">Limiar</a><a class="dropdown-item" href="#">Média</a><a class="dropdown-item" href="#">Sobel X</a><a class="dropdown-item" href="#">Sobel Y</a><a class="dropdown-item" href="#">Sobel XY</a></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> Home</a>
                     </li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="font-family: Allerta, sans-serif;">Madeira</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Mensuração</a><a class="dropdown-item" href="#">Gráfico</a><a class="dropdown-item" href="#">Ajustes Finos</a></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bancoImagens.html"> Banco de Imagens</a>
                     </li>
-                </ul><a class="btn btn-primary" role="button" style="background: rgb(59,62,131);border-radius: 10;border-style: none;font-family: Allerta, sans-serif;" href="login.html">Entrar</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="arquivos.html"> Arquivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="sobre.html"> Sobre</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"> Filtros</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"> Afinamento</a>
+                            <a class="dropdown-item" href="#"> Dilatação</a>
+                            <a class="dropdown-item" href="#"> Erosão</a>
+                            <a class="dropdown-item" href="#"> Laplaciano</a>
+                            <a class="dropdown-item" href="filtroLimiarizacao.html"> Limiar</a>
+                            <a class="dropdown-item" href="#"> Média</a>
+                            <a class="dropdown-item" href="#"> Sobel X</a>
+                            <a class="dropdown-item" href="#"> Sobel Y</a>
+                            <a class="dropdown-item" href="#"> Sobel XY</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"> Madeira</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"> Mensuração</a>
+                            <a class="dropdown-item" href="#"> Gráfico</a>
+                            <a class="dropdown-item" href="#"> Ajustes Finos</a>
+                        </div>
+                    </li>
+                </ul>
+                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;" href="login.html">Entrar</a>
             </div>
         </div>
     </nav>
+
     <main class="page hire-me-page">
         <section class="portfolio-block hire-me">
             <div class="container">
-                <div class="heading"><img src="assets/img/logo-ufu.png" width="206" height="195" style="width: 200px;height: 200px;">
+                <div class="heading">
+                    <img src="assets/img/logo-ufu.png" width="206" height="195" style="width: 200px;height: 200px;">
                     <h2>SAIM</h2>
                     <div class="row">
-                        <div class="col" style="font-family: Allerta, sans-serif;"><span style="font-family: Allerta, sans-serif;font-weight: bold;font-size: 20px;"><span style="font-weight: normal !important;">Bem vindo ao sobre, aqui você pode conferir os elaboradores desse projeto e detalhes sobre o mesmo</span></span></div>
+                        <div class="col">
+                            <span style="font-weight: bold;font-size: 20px;">
+                                <span style="font-weight: normal !important;">Bem vindo ao sobre, aqui você pode conferir os elaboradores desse projeto e detalhes sobre o mesmo</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="row" id="linhaOrganizadores">
                     <div class="col-md-3">
-                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover" src="https://avatars.githubusercontent.com/u/54840288?v=4" alt="Card Image" style="border-radius: 5%;"></a>
+                        <div class="card border-0">
+                            <a href="#">
+                                <img class="card-img-top scale-on-hover" src="https://avatars.githubusercontent.com/u/54840288?v=4" alt="Card Image" style="border-radius: 5%;">
+                            </a>
                             <div class="card-body">
-                                <p>Professor Orientador Dr. Thiago Pirola</p><a class="btn btn-primary" role="button" style="font-family: Allerta, sans-serif;background: rgb(59,62,131);" href="https://github.com/tpribeiro123" target="_blank">GitHub</a>
+                                <p>Professor Orientador Dr. Thiago Pirola</p>
+                                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);" href="https://github.com/tpribeiro123" target="_blank">GitHub</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover" src="https://avatars.githubusercontent.com/u/65378419?v=4" alt="Card Image" style="border-radius: 5%;"></a>
+                        <div class="card border-0">
+                            <a href="#">
+                                <img class="card-img-top scale-on-hover" src="https://avatars.githubusercontent.com/u/65378419?v=4" alt="Card Image" style="border-radius: 5%;">
+                            </a>
                             <div class="card-body">
-                                <p>Pesquisador e Desenvolvedor Paulo Henrique</p><a class="btn btn-primary" role="button" style="font-family: Allerta, sans-serif;background: rgb(59,62,131);" href="https://github.com/PauloHenriqueAS" target="_blank">GitHub</a>
+                                <p>Pesquisador e Desenvolvedor Paulo Henrique</p>
+                                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);" href="https://github.com/PauloHenriqueAS" target="_blank">GitHub</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover" src="assets/img/professores/ProfAmeliaGuimaraes.jpg" alt="Card Image" style="border-radius: 5%;"></a>
+                        <div class="card border-0">
+                            <a href="#">
+                                <img class="card-img-top scale-on-hover" src="assets/img/professores/ProfAmeliaGuimaraes.jpg" alt="Card Image" style="border-radius: 5%;">
+                            </a>
                             <div class="card-body">
-                                <p>Professora Colaboradora&nbsp; Dra. Amélia Guimarães</p><a class="btn btn-primary" role="button" style="font-family: Allerta, sans-serif;background: rgb(59,62,131);" href="https://ufu.br/equipe/amelia-guimaraes-carvalho" target="_blank">UFU</a>
+                                <p>Professora Colaboradora&nbsp; Dra. Amélia Guimarães</p>
+                                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);" href="https://ufu.br/equipe/amelia-guimaraes-carvalho" target="_blank">UFU</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card border-0"><a href="#"><img class="card-img-top scale-on-hover" src="assets/img/professores/ProfAntônioJose.jpg" alt="Card Image" style="border-radius: 5%;"></a>
+                        <div class="card border-0">
+                            <a href="#">
+                                <img class="card-img-top scale-on-hover" src="assets/img/professores/ProfAntônioJose.jpg" alt="Card Image" style="border-radius: 5%;">
+                            </a>
                             <div class="card-body">
-                                <p>Professora Colaborador&nbsp; Dr. Antônio José</p><a class="btn btn-primary" role="button" style="font-family: Allerta, sans-serif;color: var(--bs-card-bg);background: rgb(59,62,131);" href="https://ufu.br/equipe/antonio-jose-vinha-zanuncio" target="_blank">UFU</a>
+                                <p>Professora Colaborador&nbsp; Dr. Antônio José</p>
+                                <a class="btn btn-primary" role="button" style="color: var(--bs-card-bg);background: rgb(59,62,131);" href="https://ufu.br/equipe/antonio-jose-vinha-zanuncio" target="_blank">UFU</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <p><br><span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum. Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem. Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed commodo velit faucibus.</span><br><br><span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum. Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem. Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed commodo velit faucibus.</span><br><br><span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum. Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem. Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed commodo velit faucibus.</span><br><br></p>
+                    <p>
+                        <br>
+                        <span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum. Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem. Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed commodo velit faucibus.</span>
+                        <br>
+                        <br>
+                        <span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum. Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem. Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed commodo velit faucibus.</span>
+                        <br>
+                        <br>
+                        <span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum. Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem. Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed commodo velit faucibus.</span>
+                        <br>
+                        <br>
+                    </p>
                 </div>
             </div>
         </section>
     </main>
+
     <footer class="page-footer">
         <div class="container">
-            <div class="links"><img src="assets/img/facom_logo.png" style="width: 40px;height: 30px;"><a href="https://facom.ufu.br/" target="_blank" style="font-family: Allerta, sans-serif;">Facom UFU</a></div>
-            <div class="social-icons"><a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);" target="_blank"><i class="icon ion-social-github"></i></a><a href="https://github.com/tpribeiro123" style="background: var(--bs-blue);" target="_blank"><i class="icon ion-social-github"></i></a></div>
+            <div class="links">
+                <img src="assets/img/facom_logo.png" style="width: 40px;height: 30px;">
+                <a href="https://facom.ufu.br/" target="_blank" style="">Facom UFU</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);" target="_blank">
+                    <i class="icon ion-social-github"></i>
+                </a>
+                <a href="https://github.com/tpribeiro123" style="background: var(--bs-blue);" target="_blank">
+                    <i class="icon ion-social-github"></i>
+                </a>
+            </div>
         </div>
     </footer>
-    <script src="assets/js/jquery.min.js"></script>
+
+    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Simple-Slider.js"></script>
+    <script src="assets/js/pikaday.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/comum.js"></script>
-    <script src="assets/js/pikaday.min.js"></script>
-    <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>
 

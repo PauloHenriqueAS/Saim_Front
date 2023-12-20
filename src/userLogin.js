@@ -33,11 +33,14 @@ const handleSubmit = () => {
           const resData = await res.json();
           console.log(resData)
           if(resData.success == true){
+            //recordStorageUser(resData)
+            saveUserInformation(resData)
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
               text: `${resData.message}`,
             }).then(() => {
+              
               window.location.href = 'index.html';
             });
           }else{

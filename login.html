@@ -10,97 +10,120 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Angkor&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/swiper-icons.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
-    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Input-Upload.css">
-    <link rel="stylesheet" href="assets/css/pikaday.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider-swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Input-Upload.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/swiper-icons.css">
+    <link rel="stylesheet" href="assets/css/pikaday.min.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark"
         style="color: #000000;background: linear-gradient(-20deg, rgb(209,113,80) 0%, rgb(204,105,77) 20%, rgb(176,63,63) 31%, #f4a460 60%, rgb(209,113,80) 68%, rgb(204,105,77) 69%, #F4A460 100%), rgb(89,16,16);">
-        <div class="container-fluid"><a class="navbar-brand logo" href="index.html"
-                style="font-family: Angkor, serif;font-weight: bold;"><strong><span
-                        style="color: rgb(91, 32, 32);">SAIM</span></strong></a><button data-bs-toggle="collapse"
-                class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle
-                    navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="index.html" style="font-family: Angkor, serif;font-weight: bold;">
+                <strong><span style="color: rgb(91, 32, 32);">SAIM</span></strong>
+            </a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html"
-                            style="font-family: Allerta, sans-serif;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="bancoImagens.html"
-                            style="font-family: Allerta, sans-serif;">Banco de Imagens</a></li>
-                    <li class="nav-item"><a class="nav-link" href="arquivos.html"
-                            style="font-family: Allerta, sans-serif;">Arquivos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sobre.html"
-                            style="font-family: Allerta, sans-serif;">Sobre</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
-                            data-bs-toggle="dropdown" id="dropFiltrosGerais" href="#"
-                            style="font-family: Allerta, sans-serif;">Filtros</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Afinamento</a><a
-                                class="dropdown-item" href="#">Dilatação</a><a class="dropdown-item"
-                                href="#">Erosão</a><a class="dropdown-item" href="#">Laplaciano</a><a
-                                class="dropdown-item" href="filtroLimiarizacao.html">Limiar</a><a class="dropdown-item"
-                                href="#">Média</a><a class="dropdown-item" href="#">Sobel X</a><a class="dropdown-item"
-                                href="#">Sobel Y</a><a class="dropdown-item" href="#">Sobel XY</a></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> Home</a>
                     </li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false"
-                            data-bs-toggle="dropdown" id="dropFiltrosMadeira"
-                            style="font-family: Allerta, sans-serif;">Madeira</a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Mensuração</a><a
-                                class="dropdown-item" href="#">Gráfico</a><a class="dropdown-item" href="#">Ajustes
-                                Finos</a></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bancoImagens.html"> Banco de Imagens</a>
                     </li>
-                </ul><a class="btn btn-primary" role="button"
-                    style="background: rgb(59,62,131);border-radius: 10;border-style: none;font-family: Allerta, sans-serif;"
-                    href="login.html">Entrar</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="arquivos.html"> Arquivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html"> Sobre</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" id="dropFiltrosGerais" href="#"> Filtros</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"> Afinamento</a>
+                            <a class="dropdown-item" href="#"> Dilatação</a>
+                            <a class="dropdown-item" href="#"> Erosão</a>
+                            <a class="dropdown-item" href="#"> Laplaciano</a>
+                            <a class="dropdown-item" href="filtroLimiarizacao.html"> Limiar</a>
+                            <a class="dropdown-item" href="#"> Média</a>
+                            <a class="dropdown-item" href="#"> Sobel X</a>
+                            <a class="dropdown-item" href="#"> Sobel Y</a>
+                            <a class="dropdown-item" href="#"> Sobel XY</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" id="dropFiltrosMadeira" href="#"> Madeira</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"> Mensuração</a>
+                            <a class="dropdown-item" href="#"> Gráfico</a>
+                            <a class="dropdown-item" href="#"> Ajustes Finos</a>
+                        </div>
+                    </li>
+                </ul>
+                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;" href="login.html"> Entrar</a>
             </div>
         </div>
     </nav>
+
     <main class="page hire-me-page">
         <section class="portfolio-block hire-me" style="border-style: none;">
             <div class="container">
-                <div id="headLogin" class="heading"><img id="logoMadeira" class="mt-2" src="assets/img/madeira.jpg"
-                        width="233" height="207" style="width: 130px;height: 120px;">
-                    <h2 style="font-family: Allerta, sans-serif;">Saim</h2><span
-                        style="font-family: Allerta, sans-serif;">Faça login e comece a usar!</span>
+                <div id="headLogin" class="heading">
+                    <img id="logoMadeira" class="mt-2" src="assets/img/madeira.jpg" width="233" height="207" style="width: 130px;height: 120px;">
+                    <h2> Saim </h2>
+                    <span> Faça login e comece a usar!</span>
                 </div>
                 <form id="formLogin">
-                    <div class="mb-3"><i class="icon ion-ios-email" id="divEmailLogin"></i><label class="form-label"
-                            for="email" style="font-family: Allerta, sans-serif;">Endereço de email</label><input
-                            class="form-control" type="email" id="userEmailLogin" onchange="validateEmail()"></div>
-                    <div><i class="icon ion-locked" id="divPasswordLogin"></i><label class="form-label"
-                            style="font-family: Allerta, sans-serif;">Sua senha</label><input class="form-control"
-                            type="password" id="userPasswordLogin"></div>
-                    <div class="mb-3"><button class="btn btn-primary d-block w-100" id="btnLogin" type="submit" onclick="handleSubmit()"
-                            style="background: rgb(59,62,131);border-style: none;font-family: Allerta, sans-serif;">Entrar</button>
+                    <div class="mb-3">
+                        <i class="icon ion-ios-email" id="divEmailLogin"></i>
+                        <label class="form-label" for="email" >Endereço de email</label>
+                        <input class="form-control" type="email" id="userEmailLogin" onchange="validateEmail()">
                     </div>
-                    <div id="divLinks"><a href="cadastro.html"
-                            style="background: #ffffff;font-family: Allerta, sans-serif;"><br><span
-                                style="color: rgb(0, 123, 255); background-color: rgb(248, 249, 250);">Não possui uma
-                                conta? Criar uma agora!</span><br><br></a>
-                        <a id="linkSenha" href="redefinicaoSenha.html"
-                            style="background: #ffffff;font-family: Allerta, sans-serif;"><br><span
-                                style="color: rgb(0, 123, 255); background-color: rgb(248, 249, 250);">Redefinir
-                                Senha</a>
+                    <div>
+                        <i class="icon ion-locked" id="divPasswordLogin"></i>
+                        <label class="form-label"> Sua senha</label>
+                        <input class="form-control" type="password" id="userPasswordLogin">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary d-block w-100" id="btnLogin" type="submit" onclick="handleSubmit()" style="background: rgb(59,62,131);border-style: none;">Entrar</button>
+                    </div>
+                    <div id="divLinks">
+                        <a href="cadastro.html" style="background: #ffffff;">
+                            <br>
+                            <span style="color: rgb(0, 123, 255); background-color: rgb(248, 249, 250);"> Não possui uma conta? Criar uma agora!</span>
+                            <br>
+                            <br>
+                        </a>
+                        <a id="linkSenha" href="redefinicaoSenha.html" style="background: #ffffff;">
+                            <br>
+                            <span style="color: rgb(0, 123, 255); background-color: rgb(248, 249, 250);">Redefinir Senha </span>
+                        </a>
                     </div>
                 </form>
             </div>
         </section>
     </main>
+
     <footer class="page-footer">
         <div class="container">
-            <div class="links"><img src="assets/img/facom_logo.png" style="width: 40px;height: 30px;"><a
-                    href="https://facom.ufu.br/" target="_blank" style="font-family: Allerta, sans-serif;">Facom UFU</a>
+            <div class="links">
+                <img src="assets/img/facom_logo.png" style="width: 40px;height: 30px;">
+                <a href="https://facom.ufu.br/" target="_blank"> Facom UFU</a>
             </div>
-            <div class="social-icons"><a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);"
-                    target="_blank"><i class="icon ion-social-github"></i></a><a href="https://github.com/tpribeiro123"
-                    style="background: var(--bs-blue);" target="_blank"><i class="icon ion-social-github"></i></a></div>
+            <div class="social-icons">
+                <a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);" target="_blank">
+                    <i class="icon ion-social-github"></i>
+                </a>
+                <a href="https://github.com/tpribeiro123" style="background: var(--bs-blue);" target="_blank">
+                    <i class="icon ion-social-github"></i>
+                </a>
+            </div>
         </div>
     </footer>
+
     <script src="src/userLogin.js"></script>
     <script src="src/Extensions/constants.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -112,6 +135,8 @@
     <script src="assets/js/Simple-Slider-swiper-bundle.min.js"></script>
     <script src="assets/js/Simple-Slider.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="src/Extensions/commum.js"></script>
+    <script src="src/Extensions/storage.js"></script>
 </body>
 
 </html>
