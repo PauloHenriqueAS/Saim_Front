@@ -1,9 +1,13 @@
 $(document).ready(function () {
-  renderDatasDataTable()
+  //GetIdPageFromURL();
+  renderDatasDataTable();
 });
 
 async function renderDatasDataTable() {
-  const dataImages = await getImagesDataByPerson()
+  const personId = 2;
+  // update
+
+  const dataImages = await getImagesDataByPerson(personId)
   fillImageDataTable(dataImages)
 }
 
@@ -122,10 +126,9 @@ function fillImageDataTable(dataImages) {
   });
 }
 
-async function getImagesDataByPerson() {
+async function getImagesDataByPerson(personId) {
   try {
     jsLoading(true);
-    const personId = 2;
     const apiUrl = `${URL_API_BASE}/image/GetImageByPerson?id_pessoa=${personId}`;
     const res = await fetch(apiUrl);
     if (res.ok) {
@@ -136,7 +139,7 @@ async function getImagesDataByPerson() {
       jsLoading(false);
       Swal.fire({
         icon: 'error',
-        title: 'Erro ao buscar imagens salvas',
+        title: 'Erro ao buscar imagens salvas.',
         text: `${resData.message}`,
         allowOutsideClick: false,
       });
@@ -181,6 +184,56 @@ async function getImageByIdImage(idImage) {
   }
 }
 
-$('#btnContinue').click(function() {
-  
+$('#btnContinue').click(function () {
+  RedirectPage()
 });
+
+function GetIdPageFromURL() {
+  let queryString = window.location.search;
+  let parametros = new URLSearchParams(queryString);
+  let idDaUrl = parametros.get('idPage');
+  console.log(parseInt(idDaUrl, 10));
+  return parseInt(idDaUrl, 10);
+}
+
+function RedirectPage() {
+  // $('.dropdown-item').on('click', function () {
+  //   // Obtém o valor do atributo 'data-index'
+  //   var index = $(this).data('index');
+  var index = GetIdPageFromURL();
+    var linkPageRedirect = '';
+
+    switch (index) {
+      case 1:
+        linkPageRedirect = `${PageFiltersEnum.AFINAMENTO}`
+        break;
+      case 2:
+        linkPageRedirect = `${PageFiltersEnum.DILATACAO}`
+        break;
+      case 3:
+        linkPageRedirect = `${PageFiltersEnum.EROSAO}`
+        break;
+      case 4:
+        linkPageRedirect = `${PageFiltersEnum.LAPLACIANO}`
+        break;
+      case 5:
+        linkPageRedirect = `${PageFiltersEnum.LIMIAR}`
+        break;
+      case 6:
+        linkPageRedirect = `${PageFiltersEnum.MEDIA}`
+        break;
+      case 7:
+        linkPageRedirect = `${PageFiltersEnum.SOBEL_X}`
+        break;
+      case 8:
+        linkPageRedirect = `${PageFiltersEnum.SOBEL_Y}`
+        break;
+      case 9:
+        linkPageRedirect = `${PageFiltersEnum.SOBEL_XY}`
+        break;
+    }
+
+    // Redireciona para o destino específico
+    window.location.href = linkPageRedirect;
+  // });
+}

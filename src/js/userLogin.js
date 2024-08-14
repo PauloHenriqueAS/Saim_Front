@@ -1,3 +1,10 @@
+// $(function() {
+//   jsLoading(false);
+// });
+// $(document).ready(function() {
+// jsLoading(false);
+// });
+
 const getUserLoginFields = () => {
   return {
     email_user: $("#userEmailLogin").val().trim(),
@@ -15,12 +22,15 @@ const verifyUserLoginFields = () => {
   });
 };
 
-const handleSubmit = () => {
+function Autehenticate() {
+  jsLoading(true);
   event.preventDefault();
   verifyUserLoginFields()
     .then(async (result) => {
       if (result) {
         try {
+          console.log('inicio envio de request')
+          //jsLoading(true);
           const requestOptions = {
             method: "POST",
             headers: {
@@ -28,22 +38,23 @@ const handleSubmit = () => {
             },
             body: JSON.stringify(result),
           };
+          
           const res = await fetch(`${URL_API_BASE}/user/AutenticateUser`, requestOptions);
-
           const resData = await res.json();
-          console.log(resData)
-          if(resData.success == true){
+          
+          if (resData.success == true) {
             //recordStorageUser(resData)
-            saveUserInformation(resData)
+             jsLoading(false);
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
               text: `${resData.message}`,
             }).then(() => {
-              
+              saveUserInformation(resData);
               window.location.href = 'index.html';
             });
-          }else{
+          } else {
+            jsLoading(false);
             Swal.fire({
               icon: 'error',
               title: 'Erro no Login',
@@ -52,6 +63,7 @@ const handleSubmit = () => {
             });
           }
         } catch (err) {
+          jsLoading(false);
           Swal.fire({
             icon: 'error',
             title: 'Erro',
@@ -62,6 +74,7 @@ const handleSubmit = () => {
       }
     })
     .catch((error) => {
+      jsLoading(false);
       Swal.fire({
         icon: 'error',
         title: 'Erro',

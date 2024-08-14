@@ -8,6 +8,11 @@ function jsLoading(isOpen) {
     }
 }
 
+function LogoffSystem(){
+    clearSession();
+    window.location.href = 'index.html';
+}
+
 //local storage 
 //infos = nome usuario, tipo de usuario,  flag autenticado
 function recordStorageUser(dataLogin){
