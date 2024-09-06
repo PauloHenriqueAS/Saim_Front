@@ -9,7 +9,10 @@ const stylesheets = [
     '../../assets/fonts/ionicons.min.css',
     '../../assets/css/Simple-Slider.css',
     '../../assets/css/swiper-icons.css',
-    '../../assets/css/pikaday.min.css'
+    '../../assets/css/pikaday.min.css',
+    '../css/icons.css',
+    '../css/loader.css',
+    '../css/style.css',
 ];
 
 stylesheets.forEach(href => {
