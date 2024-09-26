@@ -40,7 +40,7 @@ function verifyUserRegistrationFields() {
       Swal.fire({
         icon: "error",
         title: "Erro",
-        text: "Senha Inválida!",
+        text: "Senha Inválida! A senha deve ter no mínimo 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial. ",
         allowOutsideClick: false,
       });
     }
@@ -67,6 +67,7 @@ function verifyUserRegistrationFields() {
 }
 
 function finishUserRegistration() {
+  jsLoading(true);
   event.preventDefault();
   verifyUserRegistrationFields()
     .then(async (result) => {
@@ -82,8 +83,11 @@ function finishUserRegistration() {
 
           const res = await fetch(`${URL_API_BASE}/user/PostFullUser`, requestOptions);
           const resData = await res.json();
+          console.log(resData);
+          jsLoading(false);
 
           if (resData.success == true) {
+            jsLoading(false);
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
@@ -92,18 +96,21 @@ function finishUserRegistration() {
               window.location.href = 'login.html';
             });
           } else {
+            console.log(resData);
+            jsLoading(false);
             Swal.fire({
               icon: 'error',
               title: 'Erro no Cadastro',
-              text: `${resData.message}`,
+              text: `${resData.detail}`,
               allowOutsideClick: false,
             });
           }
         } catch (err) {
+          jsLoading(false);
           Swal.fire({
             icon: 'error',
             title: 'Erro',
-            text: `${err.message}`,
+            text: `Cadastro não realizado!`,
             allowOutsideClick: false,
           });
         }
@@ -149,7 +156,6 @@ function validadeAllPassword() {
 
   return isValidPassword1 && isValidPassword2
 }
-
 function validatePassword(password_user, field_name) {
   const minLegth = 8;
   const haveSpecialCaracter = /[@#$%^&+=]/.test(password_user);

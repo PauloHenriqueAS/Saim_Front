@@ -100,6 +100,7 @@ function fillImageDataTable(dataImages) {
         evt.stopPropagation();
         evt.stopImmediatePropagation();
       });
+      
       $(row).click(function (evt) {
         evt.preventDefault();
         evt.stopPropagation();
@@ -140,7 +141,7 @@ async function getImagesDataByPerson(personId) {
       Swal.fire({
         icon: 'error',
         title: 'Erro ao buscar imagens salvas.',
-        text: `${resData.message}`,
+        text: `${returnApi.detail}`,
         allowOutsideClick: false,
       });
     }
@@ -149,7 +150,7 @@ async function getImagesDataByPerson(personId) {
     Swal.fire({
       icon: 'error',
       title: 'Erro',
-      text: `${error.message}`,
+      text: `Erro ao buscar imagens salvas!`,
       allowOutsideClick: false,
     });
   }
@@ -169,7 +170,7 @@ async function getImageByIdImage(idImage) {
       Swal.fire({
         icon: 'error',
         title: 'Erro ao buscar detalhes das imagens.',
-        text: `${resData.message}`,
+        text: `${returnApi.detail}`,
         allowOutsideClick: false,
       });
     }
@@ -178,7 +179,7 @@ async function getImageByIdImage(idImage) {
     Swal.fire({
       icon: 'error',
       title: 'Erro',
-      text: `${error.message}`,
+      text: `Erro ao buscar detalhes das imagens.`,
       allowOutsideClick: false,
     });
   }

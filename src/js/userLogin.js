@@ -44,7 +44,7 @@ function Autehenticate() {
           
           if (resData.success == true) {
             //recordStorageUser(resData)
-             jsLoading(false);
+            jsLoading(false);
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
@@ -58,7 +58,7 @@ function Autehenticate() {
             Swal.fire({
               icon: 'error',
               title: 'Erro no Login',
-              text: `${resData.message}`,
+              text: `${resData.detail}`,
               allowOutsideClick: false,
             });
           }
@@ -67,7 +67,7 @@ function Autehenticate() {
           Swal.fire({
             icon: 'error',
             title: 'Erro',
-            text: `${err.message}`,
+            text: `Login Inválido!`,
             allowOutsideClick: false,
           });
         }
@@ -78,7 +78,7 @@ function Autehenticate() {
       Swal.fire({
         icon: 'error',
         title: 'Erro',
-        text: `${error.message}`,
+        text: `Login Inválido!`,
         allowOutsideClick: false,
       });
     });
