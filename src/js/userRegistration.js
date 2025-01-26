@@ -20,6 +20,7 @@ function verifyUserRegistrationFields() {
       user.password_user == "" ||
       user.password_confirmation == "";
 
+    jsLoading(false);
     if (!validateEmail()) {
       Swal.fire({
         icon: "error",

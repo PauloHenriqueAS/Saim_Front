@@ -1,7 +1,11 @@
 
 function saveUserInformation(dataUser) {
     console.log(dataUser)
-    sessionStorage.setItem('dataUserAuthenticated', JSON.stringify(dataUser.data));
+    //salvar o email o tipo de user e uma flag de autenticado
+    
+    sessionStorage.setItem('emailUser', JSON.stringify(dataUser.data.email_user));
+    sessionStorage.setItem('typeUser', JSON.stringify(dataUser.data.id_user));
+    sessionStorage.setItem('isAuthenticated', true);
 }
 
 function getUserInformation() {
@@ -18,8 +22,4 @@ function getUserInformation() {
 function getUserIdInformation() {
     const dataUserStr = sessionStorage.getItem('dataUserAuthenticated');
     console.log(JSON.parse(dataUserStr));
-}
-
-function clearSession(){
-    sessionStorage.clear();
 }

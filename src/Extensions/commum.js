@@ -1,3 +1,26 @@
+$(document).ready(function () {
+    const isAuthenticated = verifyIsAuthenticated();
+    if(isAuthenticated){
+        $("#btnLoginPortal").addClass("d-none");
+        $("#btnLogout").removeClass("d-none");
+
+        //exibição dos filtros do portal
+        $("#dropFiltrosGerais").removeClass("d-none");
+        $("#dropFiltrosMadeira").removeClass("d-none");
+    }
+
+    $('#btnLogout').on('click', function(event) {
+        event.preventDefault();
+        LogoffSystem(); 
+    });
+});
+
+
+function verifyIsAuthenticated(){
+    return sessionStorage.getItem('isAuthenticated');
+}
+
+
 function jsLoading(isOpen) {
     if (isOpen) {
         $('#loaderDiv').removeClass('d-none');
@@ -9,8 +32,12 @@ function jsLoading(isOpen) {
 }
 
 function LogoffSystem(){
-    clearSession();
-    //chamar método para esconder os filtros do portal
+    sessionStorage.clear();
+    localStorage.clear();
+
+    $("#btnLoginPortal").removeClass("d-none");
+    $("#btnLogout").addClass("d-none");
+
     window.location.href = 'index.html';
 }
 

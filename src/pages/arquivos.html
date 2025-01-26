@@ -32,7 +32,7 @@
                         <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"
+                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
                             id="dropFiltrosGerais" href="#"> Filtros
                         </a>
                         <div class="dropdown-menu">
@@ -48,7 +48,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown"
+                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
                             id="dropFiltrosMadeira" href="#"> Madeira
                         </a>
                         <div class="dropdown-menu">
@@ -58,9 +58,13 @@
                         </div>
                     </li>
                 </ul>
-                <a class="btn btn-primary" role="button"
+                <a class="btn btn-primary" role="button" id="btnLoginPortal"
                     style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;"
-                    href="../pages/login.html"> Entrar
+                    href="../pages/login.html"> <i class="ion-log-in me-2"></i> Entrar
+                </a>
+                <a class="btn btn-danger d-none" role="button" id="btnLogout"
+                    style="background: rgb(106, 13, 173);border-radius: 10;border-style: none; margin-right: 2%;"
+                    href="../pages/login.html"> <i class="ion-log-out me-2"></i> Sair
                 </a>
             </div>
         </div>
@@ -123,7 +127,9 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../Extensions/loadStylesUrl.js"></script>
+    <script src="../Extensions/commum.js"></script>
     <script src="../js/files.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>

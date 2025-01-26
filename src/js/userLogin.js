@@ -41,6 +41,7 @@ function Autehenticate() {
           
           const res = await fetch(`${URL_API_BASE}/user/AutenticateUser`, requestOptions);
           const resData = await res.json();
+          console.log(resData.data);
           
           if (resData.success == true) {
             //recordStorageUser(resData)
@@ -50,7 +51,7 @@ function Autehenticate() {
               title: 'Sucesso',
               text: `${resData.message}`,
             }).then(() => {
-              saveUserInformation(resData);
+               saveUserInformation(resData);
               window.location.href = 'index.html';
             });
           } else {
