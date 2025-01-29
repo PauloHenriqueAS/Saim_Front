@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-centralizado {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 15%;
+}
+
+.mensagem {
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(106, 13, 173);
+  animation: piscar 2s infinite alternate;
+}
+
+@keyframes piscar {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}

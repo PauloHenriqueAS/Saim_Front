@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>SAIM - Redefinição de Senha</title>
+    <title>SAIM - Não Autorizado</title>
     <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
+    <link rel="stylesheet" href="../css/unauthorized.css">
 </head>
 
 <body>
@@ -28,21 +29,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active d-none" id="uploadFilesItem" href="../pages/arquivos.html"> Arquivos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
-                            id="dropFiltrosGerais" href="#"> Filtros
-                        </a>
-                        <div id="dropdownContainerFiltros" class="dropdown-menu"></div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
-                            id="dropFiltrosMadeira" href="#"> Madeira
-                        </a>
-                        <div id="dropdownContainerWood" class="dropdown-menu"></div>
-                    </li>
                 </ul>
                 <a class="btn btn-primary" role="button" id="btnLoginPortal"
                     style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;"
@@ -56,42 +42,10 @@
         </div>
     </nav>
 
-    <main class="page hire-me-page mt-2 pt-2">
-        <section class="portfolio-block hire-me mt-2 pb-2" style="border-style: none;">
-            <div class="container">
-                <div id="headLogin" class="heading">
-                    <i class="icon ion-locked text-center" style="width: 130px;height: 120px;font-size: 100px;"></i>
-                    <div class="row">
-                        <div class="col">
-                            <span style="font-weight: bold;font-size: 25px;"> Problemas para entrar?</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <span style="font-weight: bold;font-size: 18px;"> Insira seu melhor email e enviaremos um link para você voltar a acessar sua conta.</span>
-                        </div>
-                    </div>
-                </div>
-                <form id="formLogin">
-                    <div id="divEmail">
-                        <i class="icon ion-android-mail"></i>
-                        <label class="form-label" for="email"> Email</label>
-                        <input class="form-control" type="email" id="inputEmail">
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary d-block w-100" id="btnLogin" type="submit"
-                            style="background: #218838;border-style: none;"> Enviar link para login
-                        </button>
-                    </div>
-                    <div id="divLogin">
-                        <a class="text-center" href="cadastro.html">
-                            <br>
-                            <span style="color: rgb(0, 123, 255); background-color: #ffffff;"> Criar nova conta </span>
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </section>
+    <main class="page hire-me-page">
+        <div class="container-centralizado">
+            <span class="mensagem">Sem permissão para visualização!</span>
+        </div>
     </main>
 
     <footer class="page-footer">
@@ -111,15 +65,14 @@
         </div>
     </footer>
 
-    <script src="../Extensions/loadStylesUrl.js"></script>
-    <script src="../../assets/libs/jquery.min.js"></script>
-    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="../Extensions/constants.js"></script>
+    <script src="../Extensions/loadStylesUrl.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/libs/pikaday.min.js"></script>
+    <script src="../../assets/libs/jquery.min.js"></script>
     <script src="../../assets/libs/bs-init.js"></script>
     <script src="../../assets/libs/comum.js"></script>
-    <script src="../../assets/libs/pikaday.min.js"></script>
-    <script src="../../assets/libs/Simple-Slider-swiper-bundle.min.js"></script>
-    <script src="../../assets/libs/Simple-Slider.js"></script>
     <script src="../../assets/libs/theme.js"></script>
 </body>
 

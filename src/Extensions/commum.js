@@ -1,17 +1,20 @@
 $(document).ready(function () {
-    const isAuthenticated = verifyIsAuthenticated();
-    console.log("isAuthenticated.js", isAuthenticated);
-    if (isAuthenticated) {
+  const isAuthenticated = verifyIsAuthenticated();
+  console.log("isAuthenticated.js", isAuthenticated);
+  
+  if (isAuthenticated) {
     $("#btnLoginPortal").addClass("d-none");
     $("#btnLogout").removeClass("d-none");
 
-    //exibição dos filtros do portal
     $("#uploadFilesItem").removeClass("d-none");
     $("#dropFiltrosGerais").removeClass("d-none");
     $("#dropFiltrosMadeira").removeClass("d-none");
 
     generateFiltersProcess();
     generateFiltersWood();
+  } else {
+    if (blockAccessPage()) 
+      window.location.href = "unauthorized.html";
   }
 
   $("#btnLogout").on("click", function (event) {
@@ -54,7 +57,6 @@ function recordStorageUser(dataLogin) {
 }
 
 function generateFiltersProcess() {
-  // Lista de itens para o dropdown
   const dropdownItems = [
     { text: "Afinamento", href: "#" },
     { text: "Dilatação", href: "#" },
@@ -71,16 +73,16 @@ function generateFiltersProcess() {
 
   dropdownItems.forEach((item, index) => {
     $("<a>")
-      .addClass("dropdown-item") // Adiciona a classe do Bootstrap
-      .attr("href", item.href) // Define o atributo href
-      .text(item.text) // Define o texto do item
-      .data("id", index + 1) // Adiciona o número do filtro começando por 1
+      .addClass("dropdown-item") 
+      .attr("href", item.href) 
+      .text(item.text)
+      .data("id", index + 1) 
       .on("click", function (e) {
-        e.preventDefault(); // Evita o comportamento padrão do link
-        const id = $(this).data("id"); // Obtém o número do filtro
-        redirecionaTela(id); // Chama a função com o número do filtro
+        e.preventDefault(); 
+        const id = $(this).data("id"); 
+        redirecionaTela(id); 
       })
-      .appendTo($dropdownContainer); // Adiciona ao contêiner
+      .appendTo($dropdownContainer); 
   });
 }
 
@@ -94,22 +96,30 @@ function generateFiltersWood() {
   const $dropdownContainer = $("#dropdownContainerWood");
   dropdownItems.forEach((item, index) => {
     $("<a>")
-      .addClass("dropdown-item") // Adiciona a classe do Bootstrap
-      .attr("href", item.href) // Define o atributo href
-      .text(item.text) // Define o texto do item
-      .data("id", index + 1) // Adiciona o número do filtro começando por 1
+      .addClass("dropdown-item") 
+      .attr("href", item.href) 
+      .text(item.text) 
+      .data("id", index + 1) 
       .on("click", function (e) {
-        e.preventDefault(); // Evita o comportamento padrão do link
-        const id = $(this).data("id"); // Obtém o número do filtro
-        redirecionaTela(id); // Chama a função com o número do filtro
+        e.preventDefault(); 
+        const id = $(this).data("id"); 
+        redirecionaTela(id); 
       })
-      .appendTo($dropdownContainer); // Adiciona ao contêiner
+      .appendTo($dropdownContainer); 
   });
 }
 
 function redirecionaTela(id) {
-    console.log("Filtro selecionado:", id);
-    const urlDestino = `selecaoImagens.html?idFilter=${id}`; // Define a URL com o parâmetro id
-    window.location.href = urlDestino; 
-  // Aqui você pode adicionar a lógica desejada, como redirecionar ou manipular algo
+  console.log("Filtro selecionado:", id);
+  const urlDestino = `selecaoImagens.html?idFilter=${id}`;
+  window.location.href = urlDestino;
+}
+
+function blockAccessPage() {
+  var page = window.location.pathname.split("/").pop();
+
+  if (!Object.values(PageAuthFreeEnum).includes(page)) {
+    console.log(`A página "${page}" não pode ser acessada sem login.`);
+    return true;
+  } else return false;
 }
