@@ -26,41 +26,31 @@
                         <a class="nav-link" href="../pages/bancoImagens.html"> Banco de Imagens</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../pages/arquivos.html"> Arquivos</a>
+                        <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
+                        <a class="nav-link active d-none" id="uploadFilesItem" href="../pages/arquivos.html"> Arquivos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
                             id="dropFiltrosGerais" href="#"> Filtros
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Afinamento</a>
-                            <a class="dropdown-item" href="#">Dilatação</a>
-                            <a class="dropdown-item" href="#">Erosão</a>
-                            <a class="dropdown-item" href="#">Laplaciano</a>
-                            <a class="dropdown-item" href="../pages/filtroLimiarizacao.html">Limiar</a>
-                            <a class="dropdown-item" href="#">Média</a>
-                            <a class="dropdown-item" href="#">Sobel X</a>
-                            <a class="dropdown-item" href="#">Sobel Y</a>
-                            <a class="dropdown-item" href="#">Sobel XY</a>
-                        </div>
+                        <div id="dropdownContainerFiltros" class="dropdown-menu"></div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
                             id="dropFiltrosMadeira" href="#"> Madeira
                         </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Mensuração</a>
-                            <a class="dropdown-item" href="#">Gráfico</a>
-                            <a class="dropdown-item" href="#">Ajustes Finos</a>
-                        </div>
+                        <div id="dropdownContainerWood" class="dropdown-menu"></div>
                     </li>
                 </ul>
                 <a class="btn btn-primary" role="button" id="btnLoginPortal"
                     style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;"
                     href="../pages/login.html"> <i class="ion-log-in me-2"></i> Entrar
+                </a>
+                <a class="btn btn-danger d-none" role="button" id="btnLogout"
+                    style="background: rgb(106, 13, 173);border-radius: 10;border-style: none; margin-right: 2%;"
+                    href="../pages/login.html"> <i class="ion-log-out me-2"></i> Sair
                 </a>
             </div>
         </div>
