@@ -5,8 +5,10 @@ async function readUploadFiles() {
   if (inputElement.files.length > 0) {
     try {
       var dataBase64 = await getBase64FromImage(inputElement);
-      var nameFile = inputElement.files[0].name;
-
+      var nameFile = inputElement.files[0].name.split("/")[0];
+      var extension = inputElement.files[0].type.split("/")[1];	
+      
+      console.log("DSDSDSDSD", extension)
       Swal.fire({
         title: "Deseja fazer o upload da imagem?",
         showCancelButton: false,
@@ -19,7 +21,7 @@ async function readUploadFiles() {
       }).then((result) => {
         if (result.isConfirmed) {
           console.log("dataBase64", dataBase64);
-          uploadImageBase64(dataBase64, personId, nameFile);
+          uploadImageBase64(dataBase64, personId, nameFile, extension);
         } else if (result.isDenied) {
           cleanUpload();
         }
@@ -78,10 +80,11 @@ function formatDateBr() {
   return formattedDate;
 }
 
-async function uploadImageBase64(base64Data, personId, nameFile) {
+async function uploadImageBase64(base64Data, personId, nameFile, extension) {
   jsLoading(true);
   console.log("id", personId);
   console.log("element", nameFile);
+  console.log("extension", extension);
   const today = new Date().toISOString().split('T')[0]; // Data no formato YYYY-MM-DD
 
   try {
@@ -91,6 +94,7 @@ async function uploadImageBase64(base64Data, personId, nameFile) {
       name_image: nameFile,
       id_pessoa: personId,
       image: base64Data,
+      extension_image: extension,
     };
 
     console.log("requestr", requestBody);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>SAIM - Limiarização</title>
+    <title>SAIM - Dilatação</title>
     <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
@@ -88,7 +88,7 @@
     <main class="container-fluid">
         <!-- TÍTULO -->
         <h1 class="text-center display-4 mb-5" style="font-weight: bold">
-            <span class="gravity-ui--box"></span> Limiarização
+            <span class="fa fa-arrows-alt"></span> Dilatação
         </h1>
 
         <!-- Seção com imagem e filtros -->
@@ -105,18 +105,18 @@
                 <div class="filter-area">
                     <h3>Filtros</h3>
                     <div class="mb-3">
-                        <label for="inputMaximo" class="form-label">Máximo</label>
-                        <input type="number" class="form-control" id="inputMax" placeholder="Valor Máx">
+                        <label for="inputMatriz" class="form-label">Tamanho da Matriz</label>
+                        <input type="number" class="form-control" id="inputMatriz" placeholder="Tamanho Matriz">
                     </div>
                     <div class="mb-3">
-                        <label for="inputMinimo" class="form-label">Mínimo</label>
-                        <input type="number" class="form-control" id="inputMin" placeholder="Valor Mín">
+                        <label for="inputItera" class="form-label">Número Iterações</label>
+                        <input type="number" class="form-control" id="inputItera" placeholder="Num Iterações">
                     </div>
                     <!-- Botões ao final da área de filtros -->
                     <div class="text-end mt-4">
-                        <button class="btn btn-success me-2 d-none" style="background-color: #28A745; color: white; border-color: #28A745;" type="button" onclick="downloadImageProcessed('ImagemLimiarizada')" id="btnDownload">
+                        <button class="btn btn-success me-2 d-none" style="background-color: #28A745; color: white; border-color: #28A745;" type="button" onclick="downloadImageProcessed('ImagemDilatação')" id="btnDownload">
                             <i class="fa fa-download me-2"></i>Baixar</button>
-                        <button class="btn btn-primary me-2" style="background-color: #007BFF;" type="button" onclick="processThersholding()"> Processar</button>
+                        <button class="btn btn-primary me-2" style="background-color: #007BFF;" type="button" onclick="processDilate()"> Processar</button>
                         <button class="btn btn-secondary" style="background-color: rgb(106, 13, 173)" type="button" onclick="backPage()">
                             <i class="fa fa-chevron-left me-2"></i>Voltar</button>
                     </div>
@@ -144,7 +144,7 @@
 
     <script src="../Extensions/loadStylesUrl.js"></script>
     <script src="../../assets/libs/jquery.min.js"></script>
-    <script src="../js/thresholding.js"></script>
+    <script src="../js/dilate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Extensions/commum.js"></script>
     <script src="../Extensions/constants.js"></script>

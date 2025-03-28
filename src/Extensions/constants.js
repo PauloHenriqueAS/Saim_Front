@@ -9,3 +9,15 @@ const PageAuthFreeEnum = {
     sobre: 'sobre.html',
     login: 'login.html',
 };
+
+const PageFilterEnum = {
+    1: 'filtroAfinamento.html',
+    2: 'filtroDilatacao.html',
+    3: 'filtroErosao.html',
+    4: 'filtroLaplaciano.html',
+    5: 'filtroLimiarizacao.html',
+    6: 'filtroMedia.html',
+    7: 'filtroSobelX.html',
+    8: 'filtroSobelY.html',
+    9: 'filtroSobelXY.html',
+};

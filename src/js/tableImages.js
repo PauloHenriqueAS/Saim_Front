@@ -1,3 +1,5 @@
+let selectedId = null;
+
 $(document).ready(function () {
   //GetIdPageFromURL();
   renderDatasDataTable();
@@ -8,10 +10,10 @@ $(document).ready(function () {
   console.log("ID recebido:", id);
 });
 
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param);
-}
+// function getQueryParam(param) {
+//   const urlParams = new URLSearchParams(window.location.search);
+//   return urlParams.get(param);
+// }
 
 async function renderDatasDataTable() {
   const personId = sessionStorage.getItem("personId");
@@ -69,8 +71,7 @@ function getImagesColumns() {
       title: "Número de Identificação",
       className: "text-center",
       render: (data) => {
-        if (data === null || data === undefined || data === "") 
-          return "-";
+        if (data === null || data === undefined || data === "") return "-";
         else return `${data}`;
       },
       width: "20%",
@@ -90,12 +91,19 @@ function getImagesColumns() {
       title: "Data da Upload",
       className: "text-center",
       render: (data) => {
-        if (data === null || data === undefined || data === "") 
-          return "-";
+        if (data === null || data === undefined || data === "") return "-";
         else {
           const [year, month, day] = data.split("-");
           return `${day}/${month}/${year}`;
         }
+      },
+    },
+    {
+      data: "id_image",
+      title: "Excluir",
+      className: "text-center",
+      render: (data, row) => {
+        return `<button style="border: none; background: none" onclick="deleteImage('${data}')" ><i class="fa fa-trash" style="font-size: 24px; display: block; margin: 0 auto; border: none; background: none"></i></button>`;
       },
     },
   ];
@@ -155,6 +163,7 @@ function fillImageDataTable(dataImages) {
         evt.preventDefault();
         evt.stopPropagation();
 
+        selectedId = data.id_image;
         $("tr").css("background-color", "");
         $(this).css("background-color", "#66CDAA");
       });
@@ -192,7 +201,7 @@ async function getImagesDataByPerson(personId) {
       Swal.fire({
         icon: "error",
         title: "Erro ao buscar imagens salvas.",
-        text: `${returnApi.detail}`,
+        text: `${returnApi.message}`,
         allowOutsideClick: false,
       });
     }
@@ -202,6 +211,48 @@ async function getImagesDataByPerson(personId) {
       icon: "error",
       title: "Erro",
       text: `Erro ao buscar imagens salvas!`,
+      allowOutsideClick: false,
+    });
+  }
+}
+
+async function deleteImage(imageId) {
+  try {
+    jsLoading(true);
+    const personId = sessionStorage.getItem("personId");
+    const apiUrl = `${URL_API_BASE}/image/DeleteImage?id_image=${imageId}&id_person=${personId}`;
+    const res = await fetch(apiUrl, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      const returnApi = await res.json();
+      jsLoading(false);
+
+      Swal.fire({
+        icon: "success",
+        title: "Exclusão realizada com sucesso!",
+        allowOutsideClick: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.reload();
+        }
+      });
+    } else {
+      jsLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao excluir a imagem selecionada.",
+        text: `${returnApi.message}`,
+        allowOutsideClick: false,
+      });
+    }
+  } catch (error) {
+    jsLoading(false);
+    Swal.fire({
+      icon: "error",
+      title: "Erro",
+      text: `Erro ao excluir imagem!`,
       allowOutsideClick: false,
     });
   }
@@ -221,7 +272,7 @@ async function getImageByIdImage(idImage) {
       Swal.fire({
         icon: "error",
         title: "Erro ao buscar detalhes das imagens.",
-        text: `${returnApi.detail}`,
+        text: `${returnApi.message}`,
         allowOutsideClick: false,
       });
     }
@@ -236,56 +287,12 @@ async function getImageByIdImage(idImage) {
   }
 }
 
-$("#btnContinue").click(function () {
-  RedirectPage(); //refazer
-});
+function redirectFilterPage() {
+  const idDest = getQueryParam("idFilter");
+  console.log("pagina Filtro selecionado:", idDest);
+  const pageName = PageFilterEnum[idDest];
+  console.log("pagina :", pageName);
+  const urlDestino = `${pageName}?idImage=${selectedId}`;
 
-function GetIdPageFromURL() {
-  let queryString = window.location.search;
-  let parametros = new URLSearchParams(queryString);
-  let idDaUrl = parametros.get("idPage");
-  console.log(parseInt(idDaUrl, 10));
-  return parseInt(idDaUrl, 10);
-}
-
-function RedirectPage() {
-  // $('.dropdown-item').on('click', function () {
-  //   // Obtém o valor do atributo 'data-index'
-  //   var index = $(this).data('index');
-  var index = GetIdPageFromURL();
-  var linkPageRedirect = "";
-
-  switch (index) {
-    case 1:
-      linkPageRedirect = `${PageFiltersEnum.AFINAMENTO}`;
-      break;
-    case 2:
-      linkPageRedirect = `${PageFiltersEnum.DILATACAO}`;
-      break;
-    case 3:
-      linkPageRedirect = `${PageFiltersEnum.EROSAO}`;
-      break;
-    case 4:
-      linkPageRedirect = `${PageFiltersEnum.LAPLACIANO}`;
-      break;
-    case 5:
-      linkPageRedirect = `${PageFiltersEnum.LIMIAR}`;
-      break;
-    case 6:
-      linkPageRedirect = `${PageFiltersEnum.MEDIA}`;
-      break;
-    case 7:
-      linkPageRedirect = `${PageFiltersEnum.SOBEL_X}`;
-      break;
-    case 8:
-      linkPageRedirect = `${PageFiltersEnum.SOBEL_Y}`;
-      break;
-    case 9:
-      linkPageRedirect = `${PageFiltersEnum.SOBEL_XY}`;
-      break;
-  }
-
-  // Redireciona para o destino específico
-  window.location.href = linkPageRedirect;
-  // });
+  window.location.href = urlDestino;
 }
