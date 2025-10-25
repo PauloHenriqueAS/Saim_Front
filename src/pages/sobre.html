@@ -1,200 +1,399 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="pt-br">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <title>SAIM - Sobre</title>
-    <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
-</head>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../../assets/img/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark"
-        style="color: #000000;background: linear-gradient(-20deg, rgb(209,113,80) 0%, rgb(204,105,77) 20%, rgb(176,63,63) 31%, #f4a460 60%, rgb(209,113,80) 68%, rgb(204,105,77) 69%, #F4A460 100%), rgb(89,16,16);">
-        <div class="container-fluid">
-            <a class="navbar-brand logo" href="../pages/index.html"
-                style="font-family: Angkor, serif;font-weight: bold; margin-left: 2%;">
-                <img src="../../assets/img/nav-logo-saim.png" alt="LogoSaim" style="width: 50px; height: 50px; margin-right: 10px;">
-                <strong><span style="color: rgb(91, 32, 32);">SAIM</span></strong>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/index.html"> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/bancoImagens.html"> Banco de Imagens</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active d-none" id="uploadFilesItem" href="../pages/arquivos.html"> Arquivos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
-                            id="dropFiltrosGerais" href="#"> Filtros
-                        </a>
-                        <div id="dropdownContainerFiltros" class="dropdown-menu"></div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
-                            id="dropFiltrosMadeira" href="#"> Madeira
-                        </a>
-                        <div id="dropdownContainerWood" class="dropdown-menu"></div>
-                    </li>
-                </ul>
-                <a class="btn btn-primary" role="button" id="btnLoginPortal"
-                    style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;"
-                    href="../pages/login.html"> <i class="ion-log-in me-2"></i> Entrar
-                </a>
-                <a class="btn btn-danger d-none" role="button" id="btnLogout"
-                    style="background: rgb(106, 13, 173);border-radius: 10;border-style: none; margin-right: 2%;"
-                    href="../pages/login.html"> <i class="ion-log-out me-2"></i> Sair
-                </a>
-            </div>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark"
+      style="
+        color: #000000;
+        background: linear-gradient(
+            -20deg,
+            rgb(209, 113, 80) 0%,
+            rgb(204, 105, 77) 20%,
+            rgb(176, 63, 63) 31%,
+            #f4a460 60%,
+            rgb(209, 113, 80) 68%,
+            rgb(204, 105, 77) 69%,
+            #f4a460 100%
+          ),
+          rgb(89, 16, 16);
+      "
+    >
+      <div class="container-fluid">
+        <a
+          class="navbar-brand logo"
+          href="../pages/index.html"
+          style="font-family: Angkor, serif; font-weight: bold; margin-left: 2%"
+        >
+          <img
+            src="../../assets/img/nav-logo-saim.png"
+            alt="LogoSaim"
+            style="width: 50px; height: 50px; margin-right: 10px"
+          />
+          <strong><span style="color: rgb(91, 32, 32)">SAIM</span></strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../pages/index.html"> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pages/bancoImagens.html">
+                Banco de Imagens</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active d-none"
+                id="uploadFilesItem"
+                href="../pages/arquivos.html"
+              >
+                Arquivos</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="dropdown-toggle nav-link d-none"
+                aria-expanded="false"
+                data-bs-toggle="dropdown"
+                id="dropFiltrosGerais"
+                href="#"
+              >
+                Filtros
+              </a>
+              <div id="dropdownContainerFiltros" class="dropdown-menu"></div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="dropdown-toggle nav-link d-none"
+                aria-expanded="false"
+                data-bs-toggle="dropdown"
+                id="dropFiltrosMadeira"
+                href="#"
+              >
+                Madeira
+              </a>
+              <div id="dropdownContainerWood" class="dropdown-menu"></div>
+                        <div id="dropdownContainerWoodMensure" class="dropdown-menu " style="display: none;"></div>
+            </li>
+          </ul>
+          <a
+            class="btn btn-primary"
+            role="button"
+            id="btnLoginPortal"
+            style="
+              background: rgb(59, 62, 131);
+              border-radius: 10;
+              border-style: none;
+              margin-right: 2%;
+            "
+            href="../pages/login.html"
+          >
+            <i class="ion-log-in me-2"></i> Entrar
+          </a>
+          <a
+            class="btn btn-danger d-none"
+            role="button"
+            id="btnLogout"
+            style="
+              background: rgb(106, 13, 173);
+              border-radius: 10;
+              border-style: none;
+              margin-right: 2%;
+            "
+            href="../pages/login.html"
+          >
+            <i class="ion-log-out me-2"></i> Sair
+          </a>
         </div>
+      </div>
     </nav>
 
     <main class="page hire-me-page">
-        <section class="portfolio-block hire-me mt-2 pt-2 mb-0 pb-0">
-            <div class="container">
-                <div class="heading">
-                    <img src="../../assets/img/logo-ufu.png" width="206" height="195" style="width: 200px;height: 200px;">
-                    <h2>SAIM</h2>
-                    <div class="row">
-                        <div class="col">
-                            <span style="font-weight: bold;font-size: 20px;">
-                                Bem-vindo à seção sobre o projeto SAIM! 
-                            </span>
-                            <br>
-                            <span style="font-weight: bold;font-size: 20px;">
-                                Aqui você pode conferir os elaboradores desse projeto e detalhes sobre o mesmo.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="linhaOrganizadores">
-                    <div class="col-md-3">
-                        <div class="card border-0">
-                            <a href="#">
-                                <img class="card-img-top scale-on-hover"
-                                    src="https://avatars.githubusercontent.com/u/54840288?v=4" alt="Card Image"
-                                    style="border-radius: 5%;">
-                            </a>
-                            <div class="card-body">
-                                <p>Professor Orientador Dr. Thiago Pirola</p>
-                                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);"
-                                    href="https://github.com/tpribeiro123" target="_blank">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0">
-                            <a href="#">
-                                <img class="card-img-top scale-on-hover"
-                                    src="https://avatars.githubusercontent.com/u/65378419?v=4" alt="Card Image"
-                                    style="border-radius: 5%;">
-                            </a>
-                            <div class="card-body">
-                                <p>Pesquisador e Desenvolvedor Paulo Henrique</p>
-                                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);"
-                                    href="https://github.com/PauloHenriqueAS" target="_blank">GitHub
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0">
-                            <a href="#">
-                                <img class="card-img-top scale-on-hover"
-                                    src="../../assets/img/professores/ProfAmeliaGuimaraes.jpg" alt="Card Image"
-                                    style="border-radius: 5%;">
-                            </a>
-                            <div class="card-body">
-                                <p>Professora Colaboradora&nbsp; Dra. Amélia Guimarães</p>
-                                <a class="btn btn-primary" role="button" style="background: rgb(59,62,131);"
-                                    href="https://ufu.br/equipe/amelia-guimaraes-carvalho" target="_blank">UFU
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0">
-                            <a href="#">
-                                <img class="card-img-top scale-on-hover"
-                                    src="../../assets/img/professores/ProfAntônioJose.jpg" alt="Card Image"
-                                    style="border-radius: 5%;">
-                            </a>
-                            <div class="card-body">
-                                <p>Professora Colaborador&nbsp; Dr. Antônio José</p>
-                                <a class="btn btn-primary" role="button"
-                                    style="color: var(--bs-card-bg);background: rgb(59,62,131);"
-                                    href="https://ufu.br/equipe/antonio-jose-vinha-zanuncio" target="_blank">UFU
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p>
-                        <br>
-                        <span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                            faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum.
-                            Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi
-                            ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget
-                            tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non
-                            volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem.
-                            Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend
-                            magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper
-                            finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed
-                            commodo velit faucibus.</span>
-                        <br><br>
-                        <span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                            faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum.
-                            Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi
-                            ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget
-                            tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non
-                            volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem.
-                            Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend
-                            magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper
-                            finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed
-                            commodo velit faucibus.
-                        </span>
-                        <br><br>
-                        <span style="color: rgb(0, 0, 0);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                            faucibus dignissim erat, at fermentum quam ultrices quis. Ut vulputate ullamcorper rutrum.
-                            Phasellus vehicula commodo velit a molestie. Morbi congue, elit ac venenatis consequat, mi
-                            ex interdum massa, ac suscipit metus mauris quis dui. Suspendisse potenti. Quisque eget
-                            tortor tincidunt, laoreet sem sit amet, efficitur risus. Vivamus efficitur sem magna, non
-                            volutpat eros pharetra et. In ligula turpis, egestas quis arcu ac, efficitur cursus sem.
-                            Quisque at massa at nibh dignissim finibus id non nunc. Sed ac dignissim nibh, quis eleifend
-                            magna. Vivamus consectetur libero quis congue sollicitudin. Ut molestie sapien non semper
-                            finibus. Sed eget tempus purus. Sed viverra libero pellentesque dolor condimentum, sed
-                            commodo velit faucibus.
-                        </span>
-                        <br><br>
-                    </p>
-                </div>
+      <!-- ✅ Banner principal -->
+      <section
+        style="
+          background: #803c2f;
+          color: #fff;
+          padding: 60px 20px;
+          text-align: center;
+        "
+      >
+        <div class="container">
+          <h2 style="font-weight: bold; font-size: 2.5rem">
+            Sobre o Projeto SAIM
+          </h2>
+          <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto">
+            Uma iniciativa que combina ciência, computação e madeira para
+            transformar análises anatômicas, utilizando técnicas de
+            processamento digital de imagens.
+          </p>
+        </div>
+      </section>
+
+      <!-- ✅ Descrição geral -->
+      <section class="py-5" >
+        <div class="container">
+          <div class="row mb-4">
+            <div class="col-md-1 text-center">
+              <i
+                class="icon ion-ios-lightbulb"
+                style="font-size: 2rem; color: #c5724b"
+              ></i>
             </div>
-        </section>
+            <div class="col-md-11">
+              <h5><strong>O que é o SAIM?</strong></h5>
+              <p>
+                SAIM (Sistema de Análise de Imagens de Madeiras) é um sistema 
+                que utiliza técnicas de processamento digital de
+                imagens para caracterizar a qualidade da madeira. Ele opera
+                sobre imagens obtidas por microscopia de luz e força atômica,
+                analisando elementos anatômicos microscópicos (vasos, fibras,
+                raios) e submicroscópicos (ângulo microfibrilar), automatizando
+                mensurações precisas desses parâmetros.
+              </p>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-1 text-center">
+              <i
+                class="icon ion-help-circled"
+                style="font-size: 2rem; color: #c5724b"
+              ></i>
+            </div>
+            <div class="col-md-11">
+              <h5><strong>Por que ele foi criado?</strong></h5>
+              <p>
+                O SAIM foi criado para complementar as metodologias tradicionais
+                de análise da qualidade da madeira, reduzindo a subjetividade, o
+                tempo de análise e os erros manuais. Sua proposta é tornar o
+                processo de avaliação mais eficiente, preciso e acessível às
+                instituições brasileiras, especialmente frente à necessidade de
+                caracterização de espécies nativas e comerciais com potencial
+                tecnológico.
+              </p>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-1 text-center">
+              <i
+                class="icon ion-android-checkmark-circle"
+                style="font-size: 2rem; color: #c5724b"
+              ></i>
+            </div>
+            <div class="col-md-11">
+              <h5><strong>O que ele entrega?</strong></h5>
+              <p>
+                O SAIM entrega ao usuário imagens de amostras de madeira processadas e analisadas por técnicas avançadas de processamento digital, como segmentação, limiarização, filtragem e mensuração automática. Essas imagens já vêm com os elementos anatômicos destacados, mensurados e identificados, como vasos, fibras, raios e o ângulo microfibrilar. O sistema também organiza e apresenta os dados em tabelas, gráficos e histogramas, prontos para interpretação técnica, reduzindo significativamente a necessidade de análises manuais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✅ Equipe (reduzida e abaixo do conteúdo) -->
+      <section class="py-5 pt-0 mt-0">
+        <div class="container">
+          <h3 class="text-center mb-4" style="font-family: Angkor, serif; font-weight: bold; margin-left: 2%">
+            <i class="fa fa-rocket" style="font-size: 2rem;"></i>
+Equipe</h3>
+          <div class="row justify-content-center">
+            <div class="col-md-3 text-center mb-4">
+              <img
+                src="https://avatars.githubusercontent.com/u/54840288?v=4"
+                class="rounded-circle mb-2"
+                style="width: 120px; height: 120px; object-fit: cover"
+              />
+              <h6 class="mt-2">Dr. Thiago Pirola</h6>
+              <p class="text-muted">Orientador</p>
+              <a
+                class="btn btn-sm btn-dark"
+                href="https://github.com/tpribeiro123"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+
+            <div class="col-md-3 text-center mb-4">
+              <img
+                src="https://avatars.githubusercontent.com/u/65378419?v=4"
+                class="rounded-circle mb-2"
+                style="width: 120px; height: 120px; object-fit: cover"
+              />
+              <h6 class="mt-2">Paulo Henrique</h6>
+              <p class="text-muted">Pesquisador e Desenvolvedor</p>
+              <a
+                class="btn btn-sm btn-dark"
+                href="https://github.com/PauloHenriqueAS"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+
+            <div class="col-md-3 text-center mb-4">
+              <img
+                src="../../assets/img/professores/ProfAmeliaGuimaraes.jpg"
+                class="rounded-circle mb-2"
+                style="width: 120px; height: 120px; object-fit: cover"
+              />
+              <h6 class="mt-2">Dra. Amélia Guimarães</h6>
+              <p class="text-muted">Professora Colaboradora</p>
+              <a
+                class="btn btn-sm btn-dark"
+                href="https://ufu.br/equipe/amelia-guimaraes-carvalho"
+                target="_blank"
+                >UFU</a
+              >
+            </div>
+
+            <div class="col-md-3 text-center mb-4">
+              <img
+                src="../../assets/img/professores/ProfAntônioJose.jpg"
+                class="rounded-circle mb-2"
+                style="width: 120px; height: 120px; object-fit: cover"
+              />
+              <h6 class="mt-2">Dr. Antônio José</h6>
+              <p class="text-muted">Professor Colaborador</p>
+              <a
+                class="btn btn-sm btn-dark"
+                href="https://ufu.br/equipe/antonio-jose-vinha-zanuncio"
+                target="_blank"
+                >UFU</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-5 bg-light">
+        <div class="container">
+          <h3 class="text-center mb-4">Tecnologias Utilizadas</h3>
+          <div class="row text-center">
+            <!-- OpenCV -->
+            <div class="col-md-3 mb-4">
+              <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                  <i
+                    class="devicon-opencv-plain"
+                    style="font-size: 2rem; color: #803c2f"
+                  ></i>
+                  <h5 class="mt-3">OpenCV</h5>
+                  <p class="text-muted small">
+                    Biblioteca poderosa para processamento e análise de imagens.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Python -->
+            <div class="col-md-3 mb-4">
+              <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                  <i
+                    class="icon ion-social-python"
+                    style="font-size: 2rem; color: #803c2f"
+                  ></i>
+                  <h5 class="mt-3">Python</h5>
+                  <p class="text-muted small">
+                    Linguagem principal usada no backend e nos algoritmos de
+                    processamento.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="col-md-3 mb-4">
+              <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                  <i
+                    class="icon ion-social-javascript"
+                    style="font-size: 2rem; color: #803c2f"
+                  ></i>
+                  <h5 class="mt-3">JavaScript</h5>
+                  <p class="text-muted small">
+                    Responsável pela interação e experiência dinâmica no
+                    frontend.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SQL -->
+            <div class="col-md-3 mb-4">
+              <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                  <i
+                    class="devicon-postgresql-plain"
+                    style="font-size: 2rem; color: #803c2f"
+                  ></i>
+                  <h5 class="mt-3">Postgres QL</h5>
+                  <p class="text-muted small">
+                    Usado para armazenamento e consulta estruturada de dados de
+                    imagens e usuários.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="page-footer">
-        <div class="container">
-            <div class="links">
-                <img src="../../assets/img/facom_logo.png" style="width: 40px;height: 30px;">
-                <a href="https://facom.ufu.br/" target="_blank" style="font-family: Angkor, sans-serif;">Facom UFU</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);" target="_blank">
-                    <i class="icon ion-social-github"></i>
-                </a>
-                <a href="https://github.com/tpribeiro123" style="background: var(--bs-blue);" target="_blank">
-                    <i class="icon ion-social-github"></i>
-                </a>
-            </div>
+      <div class="container">
+        <div class="links">
+          <img
+            src="../../assets/img/facom_logo.png"
+            style="width: 40px; height: 30px"
+          />
+          <a
+            href="https://facom.ufu.br/"
+            target="_blank"
+            style="font-family: Angkor, sans-serif"
+            >Facom UFU</a
+          >
         </div>
+        <div class="social-icons">
+          <a
+            href="https://github.com/PauloHenriqueAS"
+            style="background: var(--bs-blue)"
+            target="_blank"
+          >
+            <i class="icon ion-social-github"></i>
+          </a>
+          <a
+            href="https://github.com/tpribeiro123"
+            style="background: var(--bs-blue)"
+            target="_blank"
+          >
+            <i class="icon ion-social-github"></i>
+          </a>
+        </div>
+      </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -209,6 +408,5 @@
     <script src="../../assets/libs/bs-init.js"></script>
     <script src="../../assets/libs/comum.js"></script>
     <script src="../../assets/libs/theme.js"></script>
-</body>
-
+  </body>
 </html>

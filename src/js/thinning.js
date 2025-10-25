@@ -1,25 +1,59 @@
 $(document).ready(function () {
   const idImage = getQueryParam("idImage");
-  showImage(idImage);
+  if (idImage && idImage.trim() !== "" && idImage !== "null") {
+    showImage(idImage);
+  } else {
+    const idSaved = getQueryParam("idSaved");
+    if (idSaved != null && idSaved == "True") {
+      showImageFromDB("processedImage");
+    } else
+      Swal.fire({
+        icon: "warning",
+        title: "Alerta",
+        text: "Não foi possível carregar a imagem, selecione outra!",
+        allowOutsideClick: false,
+      });
+  }
 });
 
 var img_processed = "";
 
 function processThinning() {
   const idImage = getQueryParam("idImage");
-  process_thinning(idImage);
+  const idSaved = getQueryParam("idSaved");
+
+  if (idSaved === "True") {
+    try {
+      const base64 = getBase64FromImgTag();
+      process_thinning(idImage, base64);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Imagem não encontrada na tela.",
+        allowOutsideClick: false,
+      });
+    }
+  } else {
+    process_thinning(idImage);
+  }
 }
 
-async function process_thinning(idImage) {
+async function process_thinning(idImage, base64) {
   jsLoading(true);
 
   try {
-    console.log("ulr", `${URL_API_BASE}/process/Thinning`);
-    const requestBody = {
-      id_image: idImage
-    };
+    let requestBody = {};
+    if (idImage && idImage.trim() !== "" && Number(idImage) > 0) {
+      requestBody = {
+        id_image: idImage,
+      };
+    } else {
+      requestBody = {
+        image: base64,
+      };
+    }
 
-    console.log("requestr", requestBody);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,8 +66,6 @@ async function process_thinning(idImage) {
     );
 
     const resData = await response.json();
-
-    // Tratamento da resposta
     if (resData.success) {
       jsLoading(false);
       Swal.fire({
@@ -41,7 +73,6 @@ async function process_thinning(idImage) {
         title: "Sucesso",
         text: "Afinamento realizado com sucesso!",
       }).then(() => {
-        console.log("processado", resData.data);
         updateImageProcessed(resData.data);
       });
     } else {

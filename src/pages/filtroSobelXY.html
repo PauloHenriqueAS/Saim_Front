@@ -8,33 +8,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-
-    <style>
-        main {
-            margin-top: 6rem;
-            padding: 2rem 1rem;
-        }
-        .image-area {
-            background-color: #f9f9f9; /* opcional */
-            border-radius: 8px;
-            height: 100%;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .image-area img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .filter-area {
-            background-color: #f1f1f1; /* opcional */
-            border-radius: 8px;
-            padding: 1rem;
-            height: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/imgZoom.css">
 </head>
 
 <body>
@@ -71,6 +45,7 @@
                             id="dropFiltrosMadeira" href="#"> Madeira
                         </a>
                         <div id="dropdownContainerWood" class="dropdown-menu"></div>
+                        <div id="dropdownContainerWoodMensure" class="dropdown-menu " style="display: none;"></div>
                     </li>
                 </ul>
                 <a class="btn btn-primary" role="button" id="btnLoginPortal"
@@ -98,6 +73,7 @@
                 <div class="image-area">
                     <!-- Ajuste o src da sua imagem abaixo -->
                     <img id="imgProcess" src="" alt="Exemplo de Imagem">
+                    <div id="myresult" class="img-zoom-result"></div>
                 </div>
             </div>
             <!-- Coluna para os filtros -->
@@ -119,6 +95,10 @@
                         <button class="btn btn-primary me-2" style="background-color: #007BFF;" type="button" onclick="processSobelXY()"> Processar</button>
                         <button class="btn btn-secondary" style="background-color: rgb(106, 13, 173)" type="button" onclick="backPage()">
                             <i class="fa fa-chevron-left me-2"></i>Voltar</button>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-secondary d-none" id="btnSaveResult" style="background-color: rgb(106, 13, 173)" type="button" onclick="saveImgResult()">
+                            <i class="fa fa-save me-2"></i>Salvar Resultado</button>
                     </div>
                 </div>
             </div>
@@ -142,6 +122,12 @@
         </div>
     </footer>
 
+    <script>
+        const img = document.getElementById("imgProcess");
+        img.onload = function () {
+          imageZoom("imgProcess", "myresult");
+        };
+    </script>
     <script src="../Extensions/loadStylesUrl.js"></script>
     <script src="../../assets/libs/jquery.min.js"></script>
     <script src="../js/sobelXY.js"></script>

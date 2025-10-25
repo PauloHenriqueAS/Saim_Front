@@ -1,12 +1,25 @@
 $(document).ready(function () {
   const idImage = getQueryParam("idImage");
-  showImage(idImage);
+  if (idImage && idImage.trim() !== "" && idImage !== "null") {
+    showImage(idImage);
+  } else {
+    const idSaved = getQueryParam("idSaved");
+    if (idSaved != null && idSaved == "True") {
+      showImageFromDB("processedImage");
+    } else
+      Swal.fire({
+        icon: "warning",
+        title: "Alerta",
+        text: "Não foi possível carregar a imagem, selecione outra!",
+        allowOutsideClick: false,
+      });
+  }
 });
 
 var img_processed = "";
 
 function processSobelY() {
-  const size = $("#inputKernel").val();
+  const size = parseInt($("#inputKernel").val(), 10);
 
   if (size == null || size === "" || size == 0) {
     Swal.fire({
@@ -22,23 +35,45 @@ function processSobelY() {
       text: "Para executar o Sobel X o valor deve ser ímpar e entre 1 e 7!",
       allowOutsideClick: false,
     });
+  }
+
+  const idImage = getQueryParam("idImage");
+  const idSaved = getQueryParam("idSaved");
+
+  if (idSaved === "True") {
+    try {
+      const base64 = getBase64FromImgTag();
+      process_sobelY(idImage, size, base64);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Imagem não encontrada na tela.",
+        allowOutsideClick: false,
+      });
+    }
   } else {
-    const idImage = getQueryParam("idImage");
     process_sobelY(idImage, size);
   }
 }
 
-async function process_sobelY(idImage, size) {
+async function process_sobelY(idImage, size, base64) {
   jsLoading(true);
 
   try {
-    console.log("ulr", `${URL_API_BASE}/process/SobelY`);
-    const requestBody = {
-      id_image: idImage,
-      kernel_size: size,
-    };
+    let requestBody = {};
+    if (idImage && idImage.trim() !== "" && Number(idImage) > 0) {
+      requestBody = {
+        id_image: idImage,
+        kernel_size: size,
+      };
+    } else {
+      requestBody = {
+        kernel_size: size,
+        image: base64,
+      };
+    }
 
-    console.log("requestr", requestBody);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -51,8 +86,6 @@ async function process_sobelY(idImage, size) {
     );
 
     const resData = await response.json();
-
-    // Tratamento da resposta
     if (resData.success) {
       jsLoading(false);
       Swal.fire({
@@ -60,7 +93,6 @@ async function process_sobelY(idImage, size) {
         title: "Sucesso",
         text: "Sobel Y realizada com sucesso!",
       }).then(() => {
-        console.log("processado", resData.data);
         updateImageProcessed(resData.data);
       });
     } else {
@@ -84,7 +116,6 @@ async function process_sobelY(idImage, size) {
 }
 
 function validateRulesSobelY(size) {
-  console.log(isOddNumber(size));
   if (size <= 0 || !isOddNumber(size) || size > 7) return true;
   return false;
 }

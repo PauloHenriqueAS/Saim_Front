@@ -5,9 +5,10 @@ $(document).ready(function () {
   renderDatasDataTable();
 
   const id = getQueryParam("idFilter");
-
+checkImageInDB()
   // Exemplo de uso: Exibir no console
   console.log("ID recebido:", id);
+
 });
 
 // function getQueryParam(param) {
@@ -43,6 +44,8 @@ async function renderDatasDataTable() {
   }
   fillImageDataTable(dataImages);
 }
+
+function verifyExistIndexDb() {}
 
 async function showDetails(idImage) {
   const dataRequest = await getImageByIdImage(idImage);
@@ -295,4 +298,44 @@ function redirectFilterPage() {
   const urlDestino = `${pageName}?idImage=${selectedId}`;
 
   window.location.href = urlDestino;
+}
+
+function redirectWithImgSaved() {
+  const idDest = getQueryParam("idFilter");
+  const pageName = PageFilterEnum[idDest];
+  const urlDestino = `${pageName}?idImage=null&idSaved=True`;
+
+  window.location.href = urlDestino;
+}
+
+async function checkImageInDB() {
+  const request = indexedDB.open("ImageDB", 1);
+
+  request.onsuccess = function (event) {
+    const db = event.target.result;
+    const tx = db.transaction("images", "readonly");
+    const store = tx.objectStore("images");
+    const getAllRequest = store.getAll();
+
+    getAllRequest.onsuccess = function (event) {
+      const result = event.target.result;
+
+      console.log("resultado ", result)
+      if (result.length > 0) {
+        // Existem imagens → habilitar e exibir o botão
+        $("#btnContinueWithSave").removeClass("d-none");
+      }
+
+      db.close();
+    };
+
+    getAllRequest.onerror = function (event) {
+      console.error("Erro ao acessar o IndexedDB:", event.target.error);
+      db.close();
+    };
+  };
+
+  request.onerror = function (event) {
+    console.error("Erro ao abrir o IndexedDB:", event.target.error);
+  };
 }

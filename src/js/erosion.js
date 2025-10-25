@@ -1,47 +1,82 @@
 $(document).ready(function () {
   const idImage = getQueryParam("idImage");
-  showImage(idImage);
+  if (idImage && idImage.trim() !== "" && idImage !== "null") {
+    showImage(idImage);
+  } else {
+    const idSaved = getQueryParam("idSaved");
+    if (idSaved != null && idSaved == "True") {
+      showImageFromDB("processedImage");
+    } else
+      Swal.fire({
+        icon: "warning",
+        title: "Alerta",
+        text: "Não foi possível carregar a imagem, selecione outra!",
+        allowOutsideClick: false,
+      });
+  }
 });
 
 var img_processed = "";
 
 function processErosion() {
-  const size = $("#inputMatriz").val();
-  const iterations = $("#inputItera").val();
+  const size = parseInt($("#inputMatriz").val(), 10);
+  const iterations = parseInt($("#inputItera").val(), 10);
 
-  if ((size == null || size === "" || size == 0) || 
-      (iterations == null || iterations === "" || iterations == 0)) {
+  if (size == null || size === "" || size == 0 || iterations == null || iterations === "" || iterations == 0 ) {
     Swal.fire({
       icon: "warning",
       title: "Alerta",
       text: "Preencha os filtros da erosão corretamente para prosseguir!",
       allowOutsideClick: false,
     });
-  } else if(validateRulesErosion()){
+  } else if (validateRulesErosion(size, iterations)) {
     Swal.fire({
       icon: "warning",
       title: "Valores inválidos",
-      text: "Para executar a dilatação o valor deve ser ímpar a interação deve ser maior igual a 1 e valor recomendado entre 3 e 15!",
+      text: "Para executar a Erosão o valor deve ser ímpar a interação deve ser maior igual a 1 e valor recomendado entre 3 e 15!",
       allowOutsideClick: false,
     });
+  } 
+  
+  const idImage = getQueryParam("idImage");
+  const idSaved = getQueryParam("idSaved");
+
+  if (idSaved === "True") {
+    try {
+      const base64 = getBase64FromImgTag();
+      process_erosion(idImage, size, iterations, base64);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Imagem não encontrada na tela.",
+        allowOutsideClick: false,
+      });
+    }
   } else {
-    const idImage = getQueryParam("idImage");
     process_erosion(idImage, size, iterations);
   }
 }
 
-async function process_erosion(idImage, size, iterations) {
+async function process_erosion(idImage, size, iterations, base64) {
   jsLoading(true);
 
   try {
-    console.log("ulr", `${URL_API_BASE}/process/Erosion`);
-    const requestBody = {
-      id_image: idImage,
-      kernel_size: size,
-      num_iterations: iterations
-    };
+    let requestBody = {};
+    if (idImage && idImage.trim() !== "" && Number(idImage) > 0) {
+      requestBody = {
+        id_image: idImage,
+        kernel_size: size,
+        num_iterations: iterations,
+      };
+    } else {
+      requestBody = {
+        kernel_size: size,
+        num_iterations: iterations,
+        image: base64,
+      };
+    }
 
-    console.log("requestr", requestBody);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -54,8 +89,6 @@ async function process_erosion(idImage, size, iterations) {
     );
 
     const resData = await response.json();
-
-    // Tratamento da resposta
     if (resData.success) {
       jsLoading(false);
       Swal.fire({
@@ -63,7 +96,6 @@ async function process_erosion(idImage, size, iterations) {
         title: "Sucesso",
         text: "Erosão realizada com sucesso!",
       }).then(() => {
-        console.log("processado", resData.data);
         updateImageProcessed(resData.data);
       });
     } else {
@@ -87,7 +119,8 @@ async function process_erosion(idImage, size, iterations) {
 }
 
 function validateRulesErosion(size, iterations) {
-  console.log(isOddNumber(size));
-  if (size <= 0 || !isOddNumber(size) || iterations <= 0 ) return true;
+  if (size <= 0 || !isOddNumber(size) || iterations <= 0) {
+    return true;
+  }
   return false;
 }

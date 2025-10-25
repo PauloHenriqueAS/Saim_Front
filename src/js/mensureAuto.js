@@ -18,41 +18,14 @@ $(document).ready(function () {
 
 var img_processed = "";
 
-function processDilate() {
-  const size = parseInt($("#inputMatriz").val(), 10);
-  const iterations = parseInt($("#inputItera").val(), 10);
-
-  if (
-    size == null ||
-    size === "" ||
-    size == 0 ||
-    iterations == null ||
-    iterations === "" ||
-    iterations == 0
-  ) {
-    Swal.fire({
-      icon: "warning",
-      title: "Alerta",
-      text: "Preencha os filtros da dilatação corretamente para prosseguir!",
-      allowOutsideClick: false,
-    });
-  } else if (validateRulesDilate(size, iterations)) {
-    Swal.fire({
-      icon: "warning",
-      title: "Valores inválidos",
-      text: "Para executar a dilatação o valor deve ser ímpar a interação deve ser maior igual a 1 e valor recomendado entre 3 e 15!",
-      allowOutsideClick: false,
-    });
-    return;
-  }
-
+function processMensureAuto() {
   const idImage = getQueryParam("idImage");
   const idSaved = getQueryParam("idSaved");
 
   if (idSaved === "True") {
     try {
       const base64 = getBase64FromImgTag();
-      process_dilate(idImage, size, iterations, base64);
+      process_mensure_auto(idImage, base64);
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -62,11 +35,11 @@ function processDilate() {
       });
     }
   } else {
-    process_dilate(idImage, size, iterations);
+    process_mensure_auto(idImage);
   }
 }
 
-async function process_dilate(idImage, size, iterations, base64) {
+async function process_mensure_auto(idImage, base64) {
   jsLoading(true);
 
   try {
@@ -74,13 +47,9 @@ async function process_dilate(idImage, size, iterations, base64) {
     if (idImage && idImage.trim() !== "" && Number(idImage) > 0) {
       requestBody = {
         id_image: idImage,
-        kernel_size: size,
-        num_iterations: iterations,
       };
     } else {
       requestBody = {
-        kernel_size: size,
-        num_iterations: iterations,
         image: base64,
       };
     }
@@ -92,7 +61,7 @@ async function process_dilate(idImage, size, iterations, base64) {
     };
 
     const response = await fetch(
-      `${URL_API_BASE}/process/Dilate`,
+      `${URL_API_BASE}/process/MeasurementAuto`,
       requestOptions
     );
 
@@ -102,15 +71,17 @@ async function process_dilate(idImage, size, iterations, base64) {
       Swal.fire({
         icon: "success",
         title: "Sucesso",
-        text: "Dilatação realizada com sucesso!",
+        text: "Mensuração Automática realizado com sucesso!",
       }).then(() => {
-        updateImageProcessed(resData.data);
+        console.log(resData.data.image_processed)
+        updateImageProcessed(resData.data.image_processed);
+        renderRegionsTable(resData.data.regions)
       });
     } else {
       jsLoading(false);
       Swal.fire({
         icon: "error",
-        title: "Erro na dilatação",
+        title: "Erro no Mensuração Automática",
         text: resData.detail,
         allowOutsideClick: false,
       });
@@ -126,7 +97,21 @@ async function process_dilate(idImage, size, iterations, base64) {
   }
 }
 
-function validateRulesDilate(size, iterations) {
-  if (size <= 0 || !isOddNumber(size) || iterations <= 0) return true;
-  return false;
+function renderRegionsTable(regions) {
+  $('#idRegions').removeClass('d-none')
+  console.log('reg', regions)
+  const tbody = document.getElementById('regions-table-body');
+  tbody.innerHTML = '';
+
+  regions.forEach((region, index) => {
+    const row = document.createElement('tr');
+    row.className = "border-t";
+
+    row.innerHTML = `
+      <td class="px-4 py-2">${region.label}</td>
+      <td class="px-4 py-2">${region.area_pixels}</td>
+    `;
+
+    tbody.appendChild(row);
+  });
 }

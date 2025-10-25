@@ -42,6 +42,7 @@
                             id="dropFiltrosMadeira" href="#"> Madeira
                         </a>
                         <div id="dropdownContainerWood" class="dropdown-menu"></div>
+                        <div id="dropdownContainerWoodMensure" class="dropdown-menu " style="display: none;"></div>
                     </li>
                 </ul>
                 <a class="btn btn-primary" role="button" id="btnLoginPortal"
@@ -75,6 +76,9 @@
                     </table>
                     <div class="text-center">
                         <button class="btn btn-primary" id="btnContinue" onclick="redirectFilterPage()"> Continuar</button>
+                        <button class="btn btn-primary d-none" id="btnContinueWithSave" onclick="redirectWithImgSaved()" style="background-color: rgb(106, 13, 173); border-color: rgb(106, 13, 173);">
+                            <i class="fa fa-save me-2"></i>Processar salvo
+                        </button>
                     </div>
                 </div>
             </div>

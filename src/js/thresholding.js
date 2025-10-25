@@ -1,45 +1,89 @@
 $(document).ready(function () {
   const idImage = getQueryParam("idImage");
-  showImage(idImage);
+  console.log("idImage", idImage);
+  if (idImage && idImage.trim() !== "" && idImage !== "null") {
+    showImage(idImage);
+  } else {
+    const idSaved = getQueryParam("idSaved");
+    console.log("info poso");
+    if (idSaved != null && idSaved == "True") {
+      console.log("info positica");
+      showImageFromDB("processedImage");
+    } else
+      Swal.fire({
+        icon: "warning",
+        title: "Alerta",
+        text: "Não foi possível carregar a imagem, selecione outra!",
+        allowOutsideClick: false,
+      });
+  }
 });
 
 var img_processed = "";
 
 function processThersholding() {
-  const max = $("#inputMax").val();
-  const min = $("#inputMin").val();
-  console.log("max", max, "min", min);
+  const max = parseInt($("#inputMax").val(), 10);
+  const min = parseInt($("#inputMin").val(), 10);
 
-  if (max == null || max === "" || min == null || min === "" || min > max) {
+  if (isNaN(max) || isNaN(min) || min > max) {
     Swal.fire({
       icon: "warning",
       title: "Alerta",
       text: "Preencha os filtros de limiarização corretamente para prosseguir!",
       allowOutsideClick: false,
     });
-  } else if (validateRulesThresholding(min, max)) {
+    return;
+  }
+  if (validateRulesThresholding(min, max)) {
     Swal.fire({
       icon: "warning",
       title: "Valores inválidos",
-      text: "Para executar o limiarização os valores devem estar entre 0 e 255!",
+      text: "Para executar a limiarização, os valores devem estar entre 0 e 255!",
       allowOutsideClick: false,
     });
+    return;
+  }
+
+  const idImage = getQueryParam("idImage");
+  const idSaved = getQueryParam("idSaved");
+
+  if (idSaved === "True") {
+    try {
+      const base64 = getBase64FromImgTag();
+      process_threshold(idImage, min, max, base64);
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Imagem não encontrada na tela.",
+        allowOutsideClick: false,
+      });
+    }
   } else {
-    const idImage = getQueryParam("idImage");
     process_threshold(idImage, min, max);
   }
 }
 
-async function process_threshold(idImage, min, max) {
+async function process_threshold(idImage, min, max, base64) {
   jsLoading(true);
 
   try {
     console.log("ulr", `${URL_API_BASE}/process/Thresholding`);
-    const requestBody = {
-      id_image: idImage,
-      val_min: min,
-      val_max: max,
-    };
+    let requestBody = {};
+    if (idImage && idImage.trim() !== "" && Number(idImage) > 0) {
+       requestBody = {
+        id_image: idImage,
+        val_min: min,
+        val_max: max,
+      };
+    } else {
+       requestBody = {
+        val_min: min,
+        val_max: max,
+        image: base64,
+      };
+    }
 
     console.log("requestr", requestBody);
     const requestOptions = {
@@ -76,6 +120,7 @@ async function process_threshold(idImage, min, max) {
       });
     }
   } catch (error) {
+    console.log('errorerror', error)
     jsLoading(false);
     Swal.fire({
       icon: "error",

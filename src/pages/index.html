@@ -2,167 +2,305 @@
 <html data-bs-theme="light" lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>SAIM - Home</title>
-    <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>SAIM - Home</title>
+  <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark"
-        style="color: #000000;background: linear-gradient(-20deg, rgb(209,113,80) 0%, rgb(204,105,77) 20%, rgb(176,63,63) 31%, #f4a460 60%, rgb(209,113,80) 68%, rgb(204,105,77) 69%, #F4A460 100%), rgb(89,16,16);">
-        <div class="container-fluid">
-            <a class="navbar-brand logo" href="../pages/index.html"
-                style="font-family: Angkor, serif;font-weight: bold; margin-left: 2%;">
-                <img src="../../assets/img/nav-logo-saim.png" alt="LogoSaim" style="width: 50px; height: 50px; margin-right: 10px;">
-                <strong><span style="color: rgb(91, 32, 32);">SAIM</span></strong>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/index.html"> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/bancoImagens.html"> Banco de Imagens</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/sobre.html"> Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active d-none" id="uploadFilesItem" href="../pages/arquivos.html"> Arquivos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
-                            id="dropFiltrosGerais" href="#"> Filtros
-                        </a>
-                        <div id="dropdownContainerFiltros" class="dropdown-menu"></div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown"
-                            id="dropFiltrosMadeira" href="#"> Madeira
-                        </a>
-                        <div id="dropdownContainerWood" class="dropdown-menu"></div>
-                    </li>
-                </ul>
-                <a class="btn btn-primary" role="button" id="btnLoginPortal"
-                    style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;"
-                    href="../pages/login.html"> <i class="ion-log-in me-2"></i> Entrar
-                </a>
-                <a class="btn btn-danger d-none" role="button" id="btnLogout"
-                    style="background: rgb(106, 13, 173);border-radius: 10;border-style: none; margin-right: 2%;"
-                    href="../pages/login.html"> <i class="ion-log-out me-2"></i> Sair
-                </a>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg fixed-top bg-white portfolio-navbar gradient navbar-dark"
+    style="color: #000000;background: linear-gradient(-20deg, rgb(209,113,80) 0%, rgb(204,105,77) 20%, rgb(176,63,63) 31%, #f4a460 60%, rgb(209,113,80) 68%, rgb(204,105,77) 69%, #F4A460 100%), rgb(89,16,16);">
+    <div class="container-fluid">
+      <a class="navbar-brand logo" href="../pages/index.html"
+        style="font-family: Angkor, serif;font-weight: bold; margin-left: 2%;">
+        <img src="../../assets/img/nav-logo-saim.png" alt="LogoSaim"
+          style="width: 50px; height: 50px; margin-right: 10px;">
+        <strong><span style="color: rgb(91, 32, 32);">SAIM</span></strong>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../pages/index.html"> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/bancoImagens.html"> Banco de Imagens</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/sobre.html"> Sobre</a></li>
+          <li class="nav-item"><a class="nav-link active d-none" id="uploadFilesItem" href="../pages/arquivos.html"> Arquivos</a></li>
+          <li class="nav-item dropdown">
+            <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown" id="dropFiltrosGerais" href="#">Filtros</a>
+            <div id="dropdownContainerFiltros" class="dropdown-menu"></div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="dropdown-toggle nav-link d-none" aria-expanded="false" data-bs-toggle="dropdown" id="dropFiltrosMadeira" href="#">Madeira</a>
+            <div id="dropdownContainerWood" class="dropdown-menu"></div>
+                        <div id="dropdownContainerWoodMensure" class="dropdown-menu " style="display: none;"></div>
+          </li>
+        </ul>
+        <a class="btn btn-primary" role="button" id="btnLoginPortal"
+          style="background: rgb(59,62,131);border-radius: 10;border-style: none; margin-right: 2%;" href="../pages/login.html">
+          <i class="ion-log-in me-2"></i> Entrar
+        </a>
+        <a class="btn btn-danger d-none" role="button" id="btnLogout"
+          style="background: rgb(106, 13, 173);border-radius: 10;border-style: none; margin-right: 2%;" href="../pages/login.html">
+          <i class="ion-log-out me-2"></i> Sair
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <main class="page lanidng-page mt-2 pt-2">
-        <section class="portfolio-block block-intro mb-5 pb-2">
+  <main class="page lanidng-page mt-2 pt-2">
+        <section style="height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        <!-- Imagem com gradiente sobreposto -->
+        <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right, #803C2F 30%, rgba(197,114,75,0.3) 100%), url('../../assets/img/bancoImagens/ced_tr10.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        "></div>
+
+        <!-- Conteúdo sobre o banner -->
+        <div style="
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+        ">
+            <h1 style="font-weight: bold; font-size: 2.5rem;">Sistema de Análise de Imagens de Madeira</h1>
+            <p style="font-size: 1.1rem;">
+            Processe e análise de imagens de cortes anatômicos de madeira de forma simples e pratica.
+            </p>
+        </div>
+        </section>
+
+        <section class="portfolio-block skills py-5" style="margin-top: -100px; position: relative; z-index: 3;">
             <div class="container">
-                <div class="carousel slide w-50 mx-auto" data-bs-ride="carousel" data-bs-interval="3500" id="carouselHome">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="w-100 d-block" src="../../assets/img/samples/t1.png" alt="Slide Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 d-block" src="../../assets/img/samples/t2.png" alt="Slide Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 d-block" src="../../assets/img/samples/t3.png" alt="Slide Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 d-block" src="../../assets/img/samples/t4.png" alt="Slide Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 d-block" data-aos="fade-left" data-aos-duration="50" data-aos-once="true"
-                                src="../../assets/img/samples/t5.png" alt="Slide Image">
-                        </div>
+                <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="card border-0" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.4);">
+                    <div class="card-body">
+                        <i class="icon ion-stats-bars" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-2">Prático e Simples</h5>
                     </div>
-                    <div>
-                        <a class="carousel-control-prev" href="#carouselHome" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselHome" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                            <span class="visually-hidden">Next</span>
-                        </a>
-                    </div>
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="0" class="active"></button>
-                        <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="1"></button>
-                        <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="2"></button>
-                        <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="3"></button>
-                        <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="4"></button>
                     </div>
                 </div>
-                
+                <div class="col-md-3">
+                    <div class="card border-0" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.4);">
+                        <div class="card-body">
+                            <i class="icon ion-settings" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">Automação</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.4);">
+                    <div class="card-body">
+                        <i class="icon ion-erlenmeyer-flask" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-2">Voltado à pesquisa</h5>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.4);">
+                    <div class="card-body">
+                        <i class="icon ion-clock" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-2">Economia de tempo</h5>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </section>
 
-        <section class="portfolio-block skills mt-2 pt-2 mb-3 pb-3">
-            <div class="container">
-                <div id="divMainSaim" class="heading">
-                    <h2 style="height: 48px;font-family: Allerta, sans-serif;">SAIM</h2>
-                </div>
-                <div>
-                    <h1 style="height: 38px;font-family: Allerta, sans-serif;">Introdução</h1>
-                    <p style="font-family: Allerta, sans-serif; padding-top: 1%; padding-bottom: 2%;">
-                        Com os avanços na área da computação verificou-se um
-                        gradativo e significativo processo de automatização das análises laboratoriais nas diferentes
-                        áreas da ciência. Os resultados imediatos podem ser comprovados pela redução do tempo de
-                        realização e aumento no número das análises, além da melhoria da qualidade das informações e
-                        ganhos significativos em precisão. Diversos laboratórios particulares e de universidades
-                        utilizam a computação, mais especificamente o processamento digital de imagens para automatizar
-                        e acelerar as análises. Nesse contexto, os laboratórios que desenvolvem pesquisas nas áreas de
-                        biologia, anatomia, ciência e tecnologia da madeira (Burger e Richter, 1991), dentre outros
-                        carecem de softwares específicos para auxiliar na melhoria da precisão e também na redução do
-                        tempo de análise, permitindo a automação do processamento e análises de imagens. Dentro da
-                        universidade são ensinados aos discentes as técnicas e contextos relativos às análises a serem
-                        realizadas e, por muitas vezes, não são utilizados softwares, apenas equipamentos para
-                        mensurações manuais (réguas ou mesmo oculares com réguas) e, com isso, os discentes quando saem
-                        para o mercado de trabalho se deparam com inúmeras tecnologias, por muitas vezes já
-                        automatizadas, para a mensuração e análise das imagens.
-                    </p>
-                </div>
-                <div>
-                    <h1 style="height: 38px;font-family: Allerta, sans-serif;">Objetivo</h1>
-                    <p style="font-family: Allerta, sans-serif; padding-top: 1%;">
-                        Com os avanços na área da computação verificou-se um
-                        gradativo e significativo processo de automatização das análises laboratoriais nas diferentes
-                        áreas da ciência. Os resultados imediatos podem ser comprovados pela redução do tempo de
-                        realização e aumento no número das análises, além da melhoria da qualidade das informações e
-                        ganhos significativos em precisão. Diversos laboratórios particulares e de universidades
-                        utilizam a computação, mais especificamente o processamento digital de imagens para automatizar
-                        e acelerar as análises. Nesse contexto, os laboratórios que desenvolvem pesquisas nas áreas de
-                        biologia, anatomia, ciência e tecnologia da madeira (Burger e Richter, 1991), dentre outros
-                        carecem de softwares específicos para auxiliar na melhoria da precisão e também na redução do
-                        tempo de análise, permitindo a automação do processamento e análises de imagens. Dentro da
-                        universidade são ensinados aos discentes as técnicas e contextos relativos às análises a serem
-                        realizadas e, por muitas vezes, não são utilizados softwares, apenas equipamentos para
-                        mensurações manuais (réguas ou mesmo oculares com réguas) e, com isso, os discentes quando saem
-                        para o mercado de trabalho se deparam com inúmeras tecnologias, por muitas vezes já
-                        automatizadas, para a mensuração e análise das imagens.
-                    </p>
+        <section class="portfolio-block block-intro mb-5 pb-2 mt-0 pt-0">
+        <div class="container">
+            <div class="carousel slide w-50 mx-auto" data-bs-ride="carousel" data-bs-interval="3500" id="carouselHome">
+            <div class="carousel-inner">
+                <div class="carousel-item active"><img class="w-100 d-block" src="../../assets/img/samples/t1.png" alt="Slide Image"></div>
+                <div class="carousel-item"><img class="w-100 d-block" src="../../assets/img/samples/t2.png" alt="Slide Image"></div>
+                <div class="carousel-item"><img class="w-100 d-block" src="../../assets/img/samples/t3.png" alt="Slide Image"></div>
+                <div class="carousel-item"><img class="w-100 d-block" src="../../assets/img/samples/t4.png" alt="Slide Image"></div>
+                <div class="carousel-item">
+                <img class="w-100 d-block" data-aos="fade-left" data-aos-duration="50" data-aos-once="true"
+                    src="../../assets/img/bancoImagens/1cereja_peq.jpg" alt="Slide Image">
                 </div>
             </div>
+            <div>
+                <a class="carousel-control-prev" href="#carouselHome" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselHome" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span>
+                </a>
+            </div>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="4"></button>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section class="container my-5">
+        <div class="row text-center">
+
+            <!-- Afinamento -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-scissors" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Afinamento</h5>
+                <p class="text-muted small">Reduz estruturas até seus esqueletos centrais, ideal para medição fina.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Dilatação -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-plus-round" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Dilatação</h5>
+                <p class="text-muted small">Expande objetos em imagens binárias, útil para conexões quebradas.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Erosão -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-minus-round" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Erosão</h5>
+                <p class="text-muted small">Remove pixels das bordas dos objetos, útil para eliminar ruídos.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Laplaciano -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-flash" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Laplaciano</h5>
+                <p class="text-muted small">Destaca bordas usando segunda derivada, útil em imagens com contraste suave.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Limiar -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-ios-pie" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Limiar</h5>
+                <p class="text-muted small">Converte tons de cinza em preto e branco com base em um intervalo definido.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Média -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-waterdrop" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Média</h5>
+                <p class="text-muted small">Aplica desfoque suave para reduzir ruídos, mantendo detalhes principais.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Sobel X -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-arrow-right-b" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Sobel X</h5>
+                <p class="text-muted small">Detecta bordas verticais, ideal para identificar linhas horizontais.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Sobel Y -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-arrow-down-b" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Sobel Y</h5>
+                <p class="text-muted small">Detecta bordas horizontais, ideal para destacar estruturas verticais.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Sobel XY -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-grid" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Sobel XY</h5>
+                <p class="text-muted small">Combina Sobel X e Y para detecção completa de bordas em qualquer direção.</p>
+                </div>
+            </div>
+            </div>
+            
+            <!-- Mensuração -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-ruler" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Mensuração</h5>
+                <p class="text-muted small">Mede áreas e diâmetros de estruturas anatômicas automaticamente.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Gráfico -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-stats-bars" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Gráfico</h5>
+                <p class="text-muted small">Visualize os dados coletados com gráficos interativos e comparativos.</p>
+                </div>
+            </div>
+            </div>
+
+            <!-- Ajustes Finos -->
+            <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow" style="box-shadow: 0 4px 12px rgba(128, 60, 47, 0.2);">
+                <div class="card-body">
+                <i class="icon ion-android-settings" style="font-size: 2rem; color: #803C2F;"></i>
+                <h5 class="mt-3">Ajustes Finos</h5>
+                <p class="text-muted small">Refina os parâmetros de análise e segmentação para resultados mais precisos.</p>
+                </div>
+            </div>
+            </div>
+
+        </div>
         </section>
     </main>
 
     <footer class="page-footer mt-0 pt-0">
         <div class="container">
-            <div class="links">
-                <img src="../../assets/img/facom_logo.png" style="width: 40px;height: 30px;">
-                <a href="https://facom.ufu.br/" target="_blank" style="font-family: Angkor, sans-serif;">Facom UFU</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);" target="_blank">
-                    <i class="icon ion-social-github"></i>
-                </a>
-                <a href="https://github.com/tpribeiro123" style="background: var(--bs-blue);" target="_blank">
-                    <i class="icon ion-social-github"></i>
-                </a>
-            </div>
+        <div class="links">
+            <img src="../../assets/img/facom_logo.png" style="width: 40px;height: 30px;">
+            <a href="https://facom.ufu.br/" target="_blank" style="font-family: Angkor, sans-serif;">Facom UFU</a>
+        </div>
+        <div class="social-icons">
+            <a href="https://github.com/PauloHenriqueAS" style="background: var(--bs-blue);" target="_blank">
+            <i class="icon ion-social-github"></i>
+            </a>
+            <a href="https://github.com/tpribeiro123" style="background: var(--bs-blue);" target="_blank">
+            <i class="icon ion-social-github"></i>
+            </a>
+        </div>
         </div>
     </footer>
 

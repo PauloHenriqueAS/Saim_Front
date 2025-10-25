@@ -12,6 +12,7 @@ $(document).ready(function () {
 
     generateFiltersProcess();
     generateFiltersWood();
+    generateFiltersWoodMensure();
   } else {
     if (blockAccessPage()) window.location.href = "unauthorized.html";
   }
@@ -37,6 +38,7 @@ function jsLoading(isOpen) {
 }
 
 function LogoffSystem() {
+  indexedDB.deleteDatabase("ImageDB");
   sessionStorage.clear();
   localStorage.clear();
 
@@ -87,24 +89,73 @@ function generateFiltersProcess() {
 
 function generateFiltersWood() {
   const dropdownItems = [
-    { text: "Mensuração", href: "#" },
-    { text: "Gráfico", href: "#" },
-    { text: "Ajustes Finos", href: "#" },
+    { text: "Mensuração", href: "#", hasSubmenu: true },
+    { text: "Gráfico", href: "#", id: 12 },
+    { text: "Ajustes Finos", href: "#", id: 13 },
   ];
 
   const $dropdownContainer = $("#dropdownContainerWood");
+  $dropdownContainer.empty();
+
   dropdownItems.forEach((item, index) => {
+     const $link = $("<a>")
+    .addClass("dropdown-item")
+    .attr("href", "#")
+    .html('<span style="font-size: 14px; margin-right: 6px;">&#9666;</span>' + item.text);
+
+    if (item.hasSubmenu) {
+      $link
+        .on("mouseenter", function () {
+          const pos = $(this).offset();
+          $("#dropdownContainerWoodMensure").css({
+            top: pos.top + "px",
+            right: "100%", // posiciona para a esquerda
+            left: "auto",
+            display: "block",
+          });
+        })
+        .on("mouseleave", function () {
+          setTimeout(() => {
+            if (!$("#dropdownContainerWoodMensure").is(":hover")) {
+              $("#dropdownContainerWoodMensure").hide();
+            }
+          }, 300);
+        });
+    } else {
+      $link.data("id", item.id).on("click", function (e) {
+        e.preventDefault();
+        redirecionaTela($(this).data("id"));
+      });
+    }
+
+    $link.appendTo($dropdownContainer);
+  });
+
+  $("#dropdownContainerWoodMensure").on("mouseleave", function () {
+    $(this).hide();
+  });
+}
+
+function generateFiltersWoodMensure() {
+  const submenuItems = [
+    { text: "Mensuração Manual", id: 20 },
+    { text: "Mensuração Automática", id: 21 },
+  ];
+
+  const $submenu = $("#dropdownContainerWoodMensure");
+  $submenu.empty();
+
+  submenuItems.forEach((item) => {
     $("<a>")
       .addClass("dropdown-item")
-      .attr("href", item.href)
+      .attr("href", "#")
       .text(item.text)
-      .data("id", index + 10)
+      .data("id", item.id)
       .on("click", function (e) {
         e.preventDefault();
-        const id = $(this).data("id");
-        redirecionaTela(id);
+        redirecionaTela($(this).data("id"));
       })
-      .appendTo($dropdownContainer);
+      .appendTo($submenu);
   });
 }
 
@@ -133,22 +184,40 @@ function backPage() {
 }
 
 // Remove 'async' e use promessa (then/catch) após a chamada da função de busca
+// function showImage(idImage) {
+//   getImageByIdImagePRC(idImage)
+//     .then((data) => {
+//       console.log("Retorno da API:", data);
+//       // A API deve retornar algo como { image: "..." } (sua base64)
+//       if (data && data.image) {
+//         // Ajuste o 'src' do <img> com base64
+//         document.getElementById("imgProcess").src = `data:image/jpeg;base64,${data.image}`;
+//       } else {
+//         console.error("Não foi possível carregar a imagem Base64.");
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Erro ao mostrar a imagem:", error);
+//     });
+// }
 function showImage(idImage) {
   getImageByIdImagePRC(idImage)
     .then((data) => {
-      console.log("Retorno da API:", data);
-      // A API deve retornar algo como { image: "..." } (sua base64)
       if (data && data.image) {
-        // Ajuste o 'src' do <img> com base64
-        document.getElementById(
-          "imgProcess"
-        ).src = `data:image/jpeg;base64,${data.image}`;
+        const img = document.getElementById("imgProcess");
+
+        // Espera imagem carregar para aplicar o zoom
+        img.onload = () => {
+          imageZoom("imgProcess", "myresult");
+        };
+
+        img.src = `data:image/jpeg;base64,${data.image}`;
       } else {
-        console.error("Não foi possível carregar a imagem Base64.");
+        console.error("Imagem não encontrada.");
       }
     })
     .catch((error) => {
-      console.error("Erro ao mostrar a imagem:", error);
+      console.error("Erro ao carregar imagem:", error);
     });
 }
 
@@ -190,12 +259,31 @@ function getImageByIdImagePRC(idImage) {
 function updateImageProcessed(dataProcessed) {
   img_processed = dataProcessed;
   $("#btnDownload").removeClass("d-none");
+  $("#btnSaveResult").removeClass("d-none");
 
   if (dataProcessed != null && dataProcessed !== "") {
-    // Ajuste o 'src' do <img> com base64
-    document.getElementById(
-      "imgProcess"
-    ).src = `data:image/png;base64,${dataProcessed}`;
+    const img = document.getElementById("imgProcess");
+
+    img.onload = () => {
+      imageZoom("imgProcess", "myresult");
+    };
+
+    img.src = `data:image/png;base64,${dataProcessed}`;
+  }
+}
+
+function saveImgResult() {
+  console.log("imgSalva");
+  const img = document.getElementById("imgProcess");
+  if (img && img.src) {
+    saveImageToDB("processedImage", img.src);
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Erro",
+      text: "Erro no salvamento da imagem processada!",
+      allowOutsideClick: false,
+    });
   }
 }
 
@@ -240,7 +328,235 @@ function downloadImageProcessed(nameImage) {
 function isOddNumber(number) {
   number = Number(number);
   if (isNaN(number)) {
-      return false;
+    return false;
   }
   return number % 2 !== 0; // Retorna true se for ímpar, false se for par
+}
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open("ImageDB", 1);
+
+    request.onupgradeneeded = function (event) {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains("images")) {
+        db.createObjectStore("images", { keyPath: "id" });
+      }
+    };
+
+    request.onsuccess = function (event) {
+      resolve(event.target.result);
+    };
+
+    request.onerror = function (event) {
+      reject(event.target.error);
+    };
+  });
+}
+
+async function saveImageToDB(id, imgSrc) {
+  const db = await openDB();
+  const tx = db.transaction("images", "readwrite");
+  const store = tx.objectStore("images");
+
+  const imageData = {
+    id: id,
+    src: imgSrc,
+    savedAt: new Date(),
+  };
+
+  const request = store.put(imageData);
+
+  request.onsuccess = function () {
+    Swal.fire({
+      icon: "success",
+      title: "Sucesso",
+      text: "Imagem salva com sucesso!",
+      allowOutsideClick: false,
+    });
+    console.log(`Imagem '${id}' salva com sucesso no IndexedDB.`);
+  };
+
+  request.onerror = function (event) {
+    Swal.fire({
+      icon: "error",
+      title: "Erro",
+      text: `Erro ao salvar a imagem:', ${event.target.error}`,
+      allowOutsideClick: false,
+    });
+    console.error("Erro ao salvar a imagem:", event.target.error);
+  };
+
+  await tx.complete;
+  db.close();
+}
+
+async function loadImageFromDB(id) {
+  const db = await openDB();
+  const tx = db.transaction("images", "readonly");
+  const store = tx.objectStore("images");
+
+  const request = store.get(id);
+
+  request.onsuccess = function (event) {
+    const result = event.target.result;
+    if (result) {
+      const img = document.getElementById("imgProcess");
+      img.src = result.src;
+      console.log(`Imagem '${id}' carregada com sucesso.`);
+    } else {
+      console.log(`Imagem '${id}' não encontrada no IndexedDB.`);
+      Swal.fire({
+        icon: "info",
+        title: "Atenção",
+        text: "Nenhuma imagem salva encontrada!",
+        allowOutsideClick: false,
+      });
+    }
+  };
+
+  request.onerror = function (event) {
+    console.error("Erro ao carregar a imagem:", event.target.error);
+  };
+
+  await tx.complete;
+  db.close();
+}
+
+function imageZoom(imgID, resultID) {
+  const img = document.getElementById(imgID);
+  const result = document.getElementById(resultID);
+
+  // Remove lente antiga
+  const oldLens = img.parentElement.querySelector(".img-zoom-lens");
+  if (oldLens) oldLens.remove();
+
+  // Cria nova lente
+  const lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  img.parentElement.insertBefore(lens, img);
+
+  const cx = result.offsetWidth / lens.offsetWidth;
+  const cy = result.offsetHeight / lens.offsetHeight;
+
+  result.style.backgroundImage = `url('${img.src}')`;
+  result.style.backgroundRepeat = "no-repeat";
+
+  // Eventos de movimento
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+
+  function moveLens(e) {
+    e.preventDefault();
+
+    const pos = getCursorPos(e);
+    let x = pos.x - lens.offsetWidth / 2;
+    let y = pos.y - lens.offsetHeight / 2;
+
+    const bounds = img.getBoundingClientRect();
+
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+    if (x > bounds.width - lens.offsetWidth)
+      x = bounds.width - lens.offsetWidth;
+    if (y > bounds.height - lens.offsetHeight)
+      y = bounds.height - lens.offsetHeight;
+
+    lens.style.left = `${x}px`;
+    lens.style.top = `${y}px`;
+
+    result.style.backgroundSize = `${img.width * cx}px ${img.height * cy}px`;
+    result.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
+  }
+
+  function getCursorPos(e) {
+    e = e || window.event;
+    const bounds = img.getBoundingClientRect();
+    const x = e.pageX - bounds.left - window.pageXOffset;
+    const y = e.pageY - bounds.top - window.pageYOffset;
+    return { x, y };
+  }
+}
+
+function showImageFromDB(idImage) {
+  getImageFromDB(idImage)
+    .then((data) => {
+      if (data && data.src) {
+        const img = document.getElementById("imgProcess");
+
+        img.onload = () => {
+          imageZoom("imgProcess", "myresult");
+        };
+
+        img.src = data.src; // Já está salvo como base64 no IndexedDB
+
+        console.log(`Imagem '${idImage}' carregada do IndexedDB.`);
+      } else {
+        console.error("Imagem não encontrada no IndexedDB.");
+        Swal.fire({
+          icon: "error",
+          title: "Erro",
+          text: "Imagem não encontrada no banco local!",
+          allowOutsideClick: false,
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao carregar imagem do IndexedDB:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Falha ao acessar o banco de imagens local.",
+        allowOutsideClick: false,
+      });
+    });
+}
+
+function getImageFromDB(id) {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open("ImageDB", 1);
+
+    request.onerror = function (event) {
+      console.error("Erro ao abrir o IndexedDB:", event.target.error);
+      reject(event.target.error);
+    };
+
+    request.onsuccess = function (event) {
+      const db = event.target.result;
+      const tx = db.transaction("images", "readonly");
+      const store = tx.objectStore("images");
+
+      const getRequest = store.get(id);
+
+      getRequest.onsuccess = function (event) {
+        const result = event.target.result;
+        db.close();
+        resolve(result);
+      };
+
+      getRequest.onerror = function (event) {
+        console.error(
+          "Erro ao buscar imagem no IndexedDB:",
+          event.target.error
+        );
+        db.close();
+        reject(event.target.error);
+      };
+    };
+  });
+}
+
+function getBase64FromImgTag() {
+  const img = document.getElementById("imgProcess");
+
+  if (!img || !img.src) {
+    throw new Error("Imagem não encontrada na tag imgProcess.");
+  }
+
+  // Extrai apenas a parte base64 (remove o prefixo data:image/png;base64,)
+  const base64 = img.src.split(",")[1];
+  return base64;
 }

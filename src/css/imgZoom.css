@@ -1,0 +1,46 @@
+main {
+    margin-top: 6rem;
+    padding: 2rem 1rem;
+}
+
+.image-area {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-area img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.filter-area {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 1rem;
+    height: 100%;
+}
+
+.img-zoom-container {
+    position: relative;
+}
+
+.img-zoom-lens {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.img-zoom-result {
+    border: 1px solid #d4d4d4;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+}

@@ -20,4 +20,5 @@ const PageFilterEnum = {
     7: 'filtroSobelX.html',
     8: 'filtroSobelY.html',
     9: 'filtroSobelXY.html',
+    21: 'filtroMensuracaoAuto.html',
 };

@@ -1,48 +1,82 @@
 $(document).ready(function () {
   const idImage = getQueryParam("idImage");
-  showImage(idImage);
+  if (idImage && idImage.trim() !== "" && idImage !== "null") {
+    showImage(idImage);
+  } else {
+    const idSaved = getQueryParam("idSaved");
+    if (idSaved != null && idSaved == "True") {
+      showImageFromDB("processedImage");
+    } else
+      Swal.fire({
+        icon: "warning",
+        title: "Alerta",
+        text: "Não foi possível carregar a imagem, selecione outra!",
+        allowOutsideClick: false,
+      });
+  }
 });
 
 var img_processed = "";
 
 function processSobelXY() {
-  const sizeX = $("#inputKernelX").val();
-  const sizeY = $("#inputKernelY").val();
+  const sizeX = parseInt($("#inputKernelX").val(), 10);
+  const sizeY = parseInt($("#inputKernelY").val(), 10);
 
-  if ((sizeX == null || sizeX === "" || sizeX == 0) ||
-      (sizeY == null || sizeY === "" || sizeY == 0)) {
+  if (sizeX == null || sizeX === "" || sizeX == 0 || sizeY == null || sizeY === "" || sizeY == 0 ) {
     Swal.fire({
       icon: "warning",
       title: "Alerta",
       text: "Preencha os filtros do sobel XY corretamente para prosseguir!",
       allowOutsideClick: false,
     });
-  } else if(validateRulesSobelXY(sizeX, sizeY)){
+  } else if (validateRulesSobelXY(sizeX, sizeY)) {
     Swal.fire({
       icon: "warning",
       title: "Valores inválidos",
       text: "Para executar o Sobel XY o valor deve ser ímpar e entre 1 e 7!",
       allowOutsideClick: false,
     });
-  }
-  else{
-    const idImage = getQueryParam("idImage");
+  } 
+  
+  const idImage = getQueryParam("idImage");
+  const idSaved = getQueryParam("idSaved");
+
+  if (idSaved === "True") {
+    try {
+      const base64 = getBase64FromImgTag();
+      process_sobelXY(idImage, sizeX, sizeY, base64);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Imagem não encontrada na tela.",
+        allowOutsideClick: false,
+      });
+    }
+  } else {
     process_sobelXY(idImage, sizeX, sizeY);
   }
 }
 
-async function process_sobelXY(idImage, sizeX, sizeY) {
+async function process_sobelXY(idImage, sizeX, sizeY, base64) {
   jsLoading(true);
 
   try {
-    console.log("ulr", `${URL_API_BASE}/process/SobelXY`);
-    const requestBody = {
-      id_image: idImage,
-      kernel_size_X: sizeX,
-      kernel_size_Y: sizeY,
-    };
+    let requestBody = {};
+    if (idImage && idImage.trim() !== "" && Number(idImage) > 0) {
+      requestBody = {
+        id_image: idImage,
+        kernel_size_X: sizeX,
+        kernel_size_Y: sizeY,
+      };
+    } else {
+      requestBody = {
+        kernel_size_X: sizeX,
+        kernel_size_Y: sizeY,
+        image: base64,
+      };
+    }
 
-    console.log("requestr", requestBody);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -55,8 +89,6 @@ async function process_sobelXY(idImage, sizeX, sizeY) {
     );
 
     const resData = await response.json();
-
-    // Tratamento da resposta
     if (resData.success) {
       jsLoading(false);
       Swal.fire({
@@ -64,7 +96,6 @@ async function process_sobelXY(idImage, sizeX, sizeY) {
         title: "Sucesso",
         text: "Sobel XY realizada com sucesso!",
       }).then(() => {
-        console.log("processado", resData.data);
         updateImageProcessed(resData.data);
       });
     } else {
@@ -88,8 +119,7 @@ async function process_sobelXY(idImage, sizeX, sizeY) {
 }
 
 function validateRulesSobelXY(sizeX, sizeY) {
-  console.log(isOddNumber(size))
-  if ((sizeX <= 0 || !isOddNumber(sizeX) || sizeX > 7) || 
-      (sizeY <= 0 || !isOddNumber(sizeY) || sizeY > 7)) return true;
+  if (sizeX <= 0 || !isOddNumber(sizeX) || sizeX > 7 || sizeY <= 0 || !isOddNumber(sizeY) || sizeY > 7)
+    return true;
   return false;
 }

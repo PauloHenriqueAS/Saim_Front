@@ -4,11 +4,37 @@ async function readUploadFiles() {
 
   if (inputElement.files.length > 0) {
     try {
+      // Validar tipo de arquivo
+      const file = inputElement.files[0];
+      if (!file.type.startsWith('image/')) {
+        Swal.fire({
+          icon: "error",
+          title: "Arquivo inválido",
+          text: "Por favor, selecione apenas arquivos de imagem.",
+          confirmButtonColor: "#007BFF",
+        });
+        return;
+      }
+
+      // Validar tamanho do arquivo (limite de 10MB)
+      const maxSize = 10 * 1024 * 1024; // 10MB
+      if (file.size > maxSize) {
+        Swal.fire({
+          icon: "error",
+          title: "Arquivo muito grande",
+          text: "O arquivo não pode ter mais de 10MB.",
+          confirmButtonColor: "#007BFF",
+        });
+        return;
+      }
+
       var dataBase64 = await getBase64FromImage(inputElement);
-      var nameFile = inputElement.files[0].name.split("/")[0];
-      var extension = inputElement.files[0].type.split("/")[1];	
       
-      console.log("DSDSDSDSD", extension)
+      // Extrair nome do arquivo sem extensão
+      var nameFile = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+      
+      // Extrair extensão do nome do arquivo
+      var extension = file.name.substring(file.name.lastIndexOf('.') + 1) || 'jpg';
       Swal.fire({
         title: "Deseja fazer o upload da imagem?",
         showCancelButton: false,
@@ -20,7 +46,6 @@ async function readUploadFiles() {
         allowOutsideClick: false,
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log("dataBase64", dataBase64);
           uploadImageBase64(dataBase64, personId, nameFile, extension);
         } else if (result.isDenied) {
           cleanUpload();
@@ -76,19 +101,14 @@ function formatDateBr() {
   const year = today.getFullYear();
 
   const formattedDate = `${day}-${month}-${year}`;
-  console.log("data", formattedDate);
   return formattedDate;
 }
 
 async function uploadImageBase64(base64Data, personId, nameFile, extension) {
   jsLoading(true);
-  console.log("id", personId);
-  console.log("element", nameFile);
-  console.log("extension", extension);
   const today = new Date().toISOString().split('T')[0]; // Data no formato YYYY-MM-DD
 
   try {
-    console.log("ulr", `${URL_API_BASE}/image/PostImage`);
     const requestBody = {
       date_image: today,
       name_image: nameFile,
@@ -97,15 +117,11 @@ async function uploadImageBase64(base64Data, personId, nameFile, extension) {
       extension_image: extension,
     };
 
-    console.log("requestr", requestBody);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
     };
-    console.log("options", requestOptions);
-
-    console.log("Início do envio de request");
 
     const response = await fetch(
       `${URL_API_BASE}/image/PostImage`,
